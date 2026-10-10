@@ -50,7 +50,7 @@
         .glow-purple { box-shadow: 0 0 30px -5px rgba(168, 85, 247, 0.3); }
         .glow-cyan { box-shadow: 0 0 30px -5px rgba(6, 182, 212, 0.3); }
         
-        /* Custom scrollbar for tables */
+        /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #0a0d14; }
         ::-webkit-scrollbar-thumb { background: #243049; border-radius: 4px; }
@@ -116,7 +116,7 @@
                     Welcome to <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple via-brand-cyan to-brand-magenta">Two Brothers Cards and Computers!</span>
                 </h1>
 
-                <!-- Exact statement as requested -->
+                <!-- Statement Box -->
                 <div class="p-6 sm:p-8 rounded-2xl bg-brand-card/90 border border-brand-border/80 shadow-2xl backdrop-blur-md relative group">
                     <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-purple to-brand-cyan rounded-2xl opacity-20 blur group-hover:opacity-30 transition"></div>
                     <p class="text-base sm:text-lg md:text-xl text-slate-200 leading-relaxed font-normal relative z-10">
@@ -226,103 +226,58 @@
                     <div>
                         <div class="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-brand-cyan">
                             <i class="fa-solid fa-boxes-stacked"></i>
-                            <span>Card Stock Hub</span>
+                            <span>Store Stock Hub</span>
                         </div>
                         <h2 class="text-2xl sm:text-4xl font-bold font-tech text-white mt-1">Physical Card Inventory</h2>
-                        <p class="text-slate-400 text-sm mt-1">Explore our high-value cards or browse the full collection database.</p>
+                        <p class="text-slate-400 text-sm mt-1">Browse our current available stock across our Valuables and Whole Collection databases.</p>
                     </div>
 
                     <!-- Main Collection Tabs: Valuables vs Whole Collection -->
-                    <div class="flex flex-wrap items-center gap-3">
-                        <button onclick="switchTab('valuables')" id="tab-valuables" 
-                                class="px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-gradient-to-r from-brand-purple to-purple-600 text-white shadow-lg glow-purple">
-                            <i class="fa-solid fa-gem text-amber-300"></i>
-                            <span>Valuables Collection</span>
-                            <span id="badge-valuables-count" class="ml-1.5 px-2 py-0.5 rounded-full bg-black/30 text-xs font-mono">0</span>
-                        </button>
+                <div class="flex flex-wrap items-center gap-3">
+                    <button onclick="switchTab('valuables')" id="tab-valuables" 
+                            class="px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-gradient-to-r from-brand-purple to-purple-600 text-white shadow-lg glow-purple">
+                        <i class="fa-solid fa-gem text-amber-300"></i>
+                        <span>Valuables Collection</span>
+                        <span id="badge-valuables-count" class="ml-1.5 px-2 py-0.5 rounded-full bg-black/30 text-xs font-mono">0</span>
+                    </button>
 
-                        <button onclick="switchTab('whole')" id="tab-whole" 
-                                class="px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-brand-surface border border-brand-border text-slate-400 hover:text-white">
-                            <i class="fa-solid fa-layer-group text-brand-cyan"></i>
-                            <span>Whole Collection</span>
-                            <span id="badge-whole-count" class="ml-1.5 px-2 py-0.5 rounded-full bg-brand-card text-xs font-mono">0</span>
-                        </button>
+                    <button onclick="switchTab('whole')" id="tab-whole" 
+                            class="px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-brand-surface border border-brand-border text-slate-400 hover:text-white">
+                        <i class="fa-solid fa-layer-group text-brand-cyan"></i>
+                        <span>Whole Collection</span>
+                        <span id="badge-whole-count" class="ml-1.5 px-2 py-0.5 rounded-full bg-brand-card text-xs font-mono">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading Status Banner (Replaces Upload Bar) -->
+            <div id="loadingStatusContainer" class="p-4 rounded-xl bg-brand-surface border border-brand-border flex items-center justify-between text-xs font-semibold text-slate-300">
+                <span id="loadingStatusText" class="flex items-center space-x-2">
+                    <i class="fa-solid fa-spinner animate-spin text-brand-cyan"></i>
+                    <span>Loading store inventory database...</span>
+                </span>
+                <span id="loadingPercentText" class="font-mono text-brand-cyan">0%</span>
+            </div>
+
+            <!-- Filter Controls Bar -->
+            <div class="p-4 rounded-xl bg-brand-card border border-brand-border flex flex-col md:flex-row items-center gap-4 justify-between">
+                    <div class="relative w-full md:w-80">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="searchInput" oninput="applyFilters()" placeholder="Search card name or set..." class="w-full bg-brand-dark border border-brand-border rounded-lg pl-9 pr-3 py-2 text-xs text-white focus:outline-none focus:border-brand-cyan">
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                        <button onclick="setFoilFilter('all')" id="foil-btn-all" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-purple text-white">All Finishes</button>
+                        <button onclick="setFoilFilter('foil')" id="foil-btn-foil" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-dark text-slate-400 border border-brand-border hover:text-white">Foils Only</button>
+                        <button onclick="setFoilFilter('normal')" id="foil-btn-normal" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-dark text-slate-400 border border-brand-border hover:text-white">Normal Only</button>
                     </div>
                 </div>
 
-                <!-- Collection Upload & Status Bar -->
-                <div class="p-4 rounded-xl bg-brand-surface border border-brand-border flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div class="text-xs text-slate-300 flex items-center space-x-2">
-                        <i class="fa-solid fa-circle-info text-brand-cyan"></i>
-                        <span id="activeTabDescription">Viewing Valuables Collection (Pre-loaded with high-value foils & rare singles).</span>
-                    </div>
-
-                    <!-- File Uploader for standard/ManaBox CSVs -->
-                    <div class="flex items-center space-x-3 w-full sm:w-auto">
-                        <label class="cursor-pointer w-full sm:w-auto px-4 py-2 rounded-lg bg-brand-card border border-brand-border text-xs font-semibold text-slate-200 hover:border-brand-purple hover:text-brand-purple transition-all flex items-center justify-center space-x-2">
-                            <i class="fa-solid fa-file-csv text-brand-purple"></i>
-                            <span id="uploadButtonText">Upload `valubles.csv` File</span>
-                            <input type="file" id="csvFileInput" accept=".csv, .txt, .json" class="hidden" onchange="handleCsvUpload(event)">
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Status alert banner for CSV Upload results -->
-                <div id="uploadAlert" class="hidden p-4 rounded-xl text-xs font-medium border"></div>
-
-                <!-- Controls & Filters Bar -->
-                <div class="p-5 rounded-2xl bg-brand-card border border-brand-border space-y-4">
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                        <!-- Search Box -->
-                        <div class="md:col-span-2 relative">
-                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                            <input type="text" id="searchInput" placeholder="Search card name, set, or code..." 
-                                   onkeyup="applyFilters()" 
-                                   class="w-full bg-brand-dark border border-brand-border rounded-xl pl-9 pr-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-brand-cyan transition-colors">
-                        </div>
-
-                        <!-- Rarity Filter -->
-                        <div>
-                            <select id="rarityFilter" onchange="applyFilters()" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-brand-cyan">
-                                <option value="all">All Rarities</option>
-                                <option value="mythic">Mythic</option>
-                                <option value="rare">Rare</option>
-                                <option value="uncommon">Uncommon</option>
-                                <option value="common">Common</option>
-                            </select>
-                        </div>
-
-                        <!-- Sort Option -->
-                        <div>
-                            <select id="sortOption" onchange="applyFilters()" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-brand-cyan">
-                                <option value="price-desc">Price: High to Low</option>
-                                <option value="price-asc">Price: Low to High</option>
-                                <option value="name-asc">Name: A to Z</option>
-                                <option value="qty-desc">Quantity: High to Low</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Secondary Quick Filter Pills -->
-                    <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-brand-border/60 text-xs">
-                        <div class="flex flex-wrap gap-2 items-center">
-                            <span class="text-slate-400 text-[11px] font-semibold uppercase mr-1">Foil:</span>
-                            <button onclick="setFoilFilter('all')" id="foil-all" class="foil-btn px-2.5 py-1 rounded-md bg-brand-purple text-white font-medium">All</button>
-                            <button onclick="setFoilFilter('foil')" id="foil-yes" class="foil-btn px-2.5 py-1 rounded-md bg-brand-dark text-slate-400 hover:text-white border border-brand-border">Foil Only</button>
-                            <button onclick="setFoilFilter('normal')" id="foil-no" class="foil-btn px-2.5 py-1 rounded-md bg-brand-dark text-slate-400 hover:text-white border border-brand-border">Normal Only</button>
-                        </div>
-
-                        <div class="text-slate-400 text-[11px]">
-                            Showing <span id="showingCount" class="font-bold text-white">0</span> matching cards
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Main Inventory Table -->
-                <div class="overflow-x-auto rounded-2xl border border-brand-border bg-brand-card/80 shadow-2xl">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="border-b border-brand-border bg-brand-surface/90 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                <!-- Inventory Table -->
+                <div class="overflow-x-auto rounded-xl border border-brand-border bg-brand-card shadow-2xl">
+                    <table class="w-full text-left text-sm text-slate-300">
+                        <thead class="bg-brand-surface text-slate-400 uppercase text-[11px] font-bold tracking-wider border-b border-brand-border">
+                            <tr>
                                 <th class="p-4">Card Name</th>
                                 <th class="p-4">Set Name</th>
                                 <th class="p-4">Rarity</th>
@@ -332,23 +287,22 @@
                                 <th class="p-4 text-center">Qty</th>
                             </tr>
                         </thead>
-                        <tbody id="inventoryTableBody" class="divide-y divide-brand-border/60 text-xs text-slate-200">
-                            <!-- Populated via JS -->
-                        </tbody>
-                    </table>
-                </div>
+                        <tbody id="inventoryTableBody" class="divide-y divide-brand-border/40 font-medium">
+            <!-- Populated via JavaScript -->
+        </tbody>
+    </table>
+</div>
 
-                <!-- Pagination Footer -->
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-brand-surface border border-brand-border">
-                    <div class="text-xs text-slate-400">
-                        Page <span id="currentPageNum" class="font-bold text-white">1</span> of <span id="totalPagesNum" class="font-bold text-white">1</span>
+                <!-- Table Pagination Footer -->
+                <div class="flex items-center justify-between border-t border-brand-border pt-4 text-xs text-slate-400">
+                    <div>
+                        Page <span id="currentPageNum" class="text-white font-bold">1</span> of <span id="totalPagesNum" class="text-white font-bold">1</span>
                     </div>
-
                     <div class="flex items-center space-x-2">
-                        <button onclick="changePage(-1)" id="prevPageBtn" class="px-3.5 py-1.5 rounded-lg bg-brand-card border border-brand-border text-xs font-semibold text-slate-300 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
-                            <i class="fa-solid fa-chevron-left mr-1"></i> Previous
+                        <button id="prevPageBtn" onclick="changePage(-1)" class="px-3 py-1.5 rounded-lg bg-brand-surface border border-brand-border text-slate-300 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
+                            <i class="fa-solid fa-chevron-left mr-1"></i> Prev
                         </button>
-                        <button onclick="changePage(1)" id="nextPageBtn" class="px-3.5 py-1.5 rounded-lg bg-brand-card border border-brand-border text-xs font-semibold text-slate-300 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
+                        <button id="nextPageBtn" onclick="changePage(1)" class="px-3 py-1.5 rounded-lg bg-brand-surface border border-brand-border text-slate-300 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
                             Next <i class="fa-solid fa-chevron-right ml-1"></i>
                         </button>
                     </div>
@@ -477,30 +431,9 @@
     </footer>
 
     <script>
-        // Global scope function declarations & state initialization
-        let valuablesData = [
-            { name: "Ocelot Pride", set: "Modern Horizons 3", rarity: "mythic", foil: "Foil", price: 42.50, qty: 1, condition: "Near Mint" },
-            { name: "Warrior's Oath", set: "Double Masters 2022", rarity: "mythic", foil: "Foil", price: 18.00, qty: 1, condition: "Near Mint" },
-            { name: "Master of Ceremonies", set: "Streets of New Capenna", rarity: "rare", foil: "Normal", price: 12.25, qty: 2, condition: "Near Mint" },
-            { name: "Sage of Hours", set: "Journey into Nyx", rarity: "rare", foil: "Foil", price: 15.50, qty: 1, condition: "Light Play" },
-            { name: "Reckless Endeavor", set: "Commander Legends", rarity: "rare", foil: "Foil", price: 9.75, qty: 1, condition: "Near Mint" },
-            { name: "Swarmyard", set: "Time Spiral Remastered", rarity: "rare", foil: "Normal", price: 11.00, qty: 3, condition: "Near Mint" },
-            { name: "Blue-Eyes White Dragon", set: "Legend of Blue Eyes", rarity: "ultra rare", foil: "Foil", price: 150.00, qty: 1, condition: "Light Play" },
-            { name: "Charizard ex Special Art", set: "151 Scarlet & Violet", rarity: "special illustration", foil: "Foil", price: 125.00, qty: 1, condition: "Gem Mint" }
-        ];
-
-        let wholeCollectionData = [
-            { name: "Eidolon of Countless Battles", set: "Born of the Gods", rarity: "rare", foil: "Normal", price: 2.50, qty: 2, condition: "Near Mint" },
-            { name: "Celestial Judgment", set: "Commander 2021", rarity: "rare", foil: "Normal", price: 1.10, qty: 1, condition: "Near Mint" },
-            { name: "Aetherstorm Roc", set: "Kaladesh", rarity: "rare", foil: "Foil", price: 0.85, qty: 4, condition: "Near Mint" },
-            { name: "Curse of Conformity", set: "Innistrad: Midnight Hunt", rarity: "rare", foil: "Normal", price: 0.95, qty: 2, condition: "Near Mint" },
-            { name: "Sol Ring", set: "Commander Masters", rarity: "uncommon", foil: "Normal", price: 2.20, qty: 8, condition: "Near Mint" },
-            { name: "Command Tower", set: "Wilds of Eldraine", rarity: "common", foil: "Normal", price: 0.50, qty: 12, condition: "Near Mint" },
-            { name: "Arcane Signet", set: "Phyrexia: All Will Be One", rarity: "common", foil: "Foil", price: 1.75, qty: 5, condition: "Near Mint" },
-            { name: "Lightning Bolt", set: "Core Set 2021", rarity: "uncommon", foil: "Normal", price: 1.25, qty: 6, condition: "Near Mint" },
-            { name: "Dark Ritual", set: "Strixhaven Mystical Archive", rarity: "uncommon", foil: "Foil", price: 6.50, qty: 2, condition: "Near Mint" },
-            { name: "Counterspell", set: "Modern Horizons 2", rarity: "uncommon", foil: "Normal", price: 1.50, qty: 10, condition: "Near Mint" }
-        ];
+        // Data arrays loaded automatically from CSV files on the server
+        let valuablesData = [];
+        let wholeCollectionData = [];
 
         let currentTab = 'valuables';
         let filteredItems = [];
@@ -508,122 +441,153 @@
         const pageSize = 25;
         let activeFoilFilter = 'all';
 
-        // Define handleCsvUpload globally before window load
-        window.handleCsvUpload = function(event) {
-            const file = event.target.files[0];
-            const alertBox = document.getElementById('uploadAlert');
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const text = e.target.result;
-                    const parsed = parseCsvContent(text);
-
-                    if (parsed.length === 0) {
-                        throw new Error("No valid rows found in CSV file.");
-                    }
-
-                    if (currentTab === 'valuables') {
-                        valuablesData = parsed;
-                    } else {
-                        wholeCollectionData = parsed;
-                    }
-
-                    updateBadgeCounts();
-                    applyFilters();
-
-                    alertBox.className = "p-4 rounded-xl text-xs font-medium bg-emerald-900/30 text-emerald-300 border border-emerald-700/50 block";
-                    alertBox.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i> Successfully imported <strong>${parsed.length}</strong> cards into the <strong>${currentTab === 'valuables' ? 'Valuables' : 'Whole Collection'}</strong> tab!`;
-                } catch (err) {
-                    alertBox.className = "p-4 rounded-xl text-xs font-medium bg-rose-900/30 text-rose-300 border border-rose-700/50 block";
-                    alertBox.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i> Could not read file: ${err.message}. Please upload standard ManaBox CSV files.`;
-                }
-            };
-            reader.readAsText(file);
-        };
-
+        // Toggle mobile navigation menu
         window.toggleMobileMenu = function() {
             const menu = document.getElementById('mobileMenu');
-            if (menu) menu.classList.toggle('hidden');
+            if (menu) {
+                menu.classList.toggle('hidden');
+            }
         };
 
-        window.switchTab = function(tab) {
-            currentTab = tab;
+        // Tab switching logic
+        window.switchTab = function(tabName) {
+            currentTab = tabName;
             currentPage = 1;
 
-            const tabValuables = document.getElementById('tab-valuables');
-            const tabWhole = document.getElementById('tab-whole');
-            const desc = document.getElementById('activeTabDescription');
-            const uploadBtnText = document.getElementById('uploadButtonText');
+            const valBtn = document.getElementById('tab-valuables');
+            const wholeBtn = document.getElementById('tab-whole');
 
-            if (tab === 'valuables') {
-                if (tabValuables) tabValuables.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-gradient-to-r from-brand-purple to-purple-600 text-white shadow-lg glow-purple";
-                if (tabWhole) tabWhole.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-brand-surface border border-brand-border text-slate-400 hover:text-white";
-                if (desc) desc.innerText = "Viewing Valuables Collection (Pre-loaded with high-value foils & rare singles).";
-                if (uploadBtnText) uploadBtnText.innerText = "Upload `valubles.csv` File";
+            if (tabName === 'valuables') {
+                if (valBtn) valBtn.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-gradient-to-r from-brand-purple to-purple-600 text-white shadow-lg glow-purple";
+                if (wholeBtn) wholeBtn.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-brand-surface border border-brand-border text-slate-400 hover:text-white";
             } else {
-                if (tabWhole) tabWhole.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-gradient-to-r from-brand-cyan to-blue-600 text-white shadow-lg glow-cyan";
-                if (tabValuables) tabValuables.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-brand-surface border border-brand-border text-slate-400 hover:text-white";
-                if (desc) desc.innerText = "Viewing Whole Collection (All stock singles, commons, uncommons, & rares).";
-                if (uploadBtnText) uploadBtnText.innerText = "Upload `Whole collection v4.csv` File";
+                if (valBtn) valBtn.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-brand-surface border border-brand-border text-slate-400 hover:text-white";
+                if (wholeBtn) wholeBtn.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-gradient-to-r from-brand-cyan to-cyan-600 text-white shadow-lg glow-cyan";
             }
 
             applyFilters();
         };
 
+        // Filter calculation
         window.applyFilters = function() {
-            const rawData = currentTab === 'valuables' ? valuablesData : wholeCollectionData;
-            const searchInput = document.getElementById('searchInput');
-            const rarityFilter = document.getElementById('rarityFilter');
-            const sortOption = document.getElementById('sortOption');
+            const searchVal = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
+            const sourceData = currentTab === 'valuables' ? valuablesData : wholeCollectionData;
 
-            const search = searchInput ? searchInput.value.toLowerCase() : '';
-            const rarity = rarityFilter ? rarityFilter.value : 'all';
-            const sort = sortOption ? sortOption.value : 'price-desc';
+            filteredItems = sourceData.filter(item => {
+                const matchesSearch = !searchVal || 
+                    (item.name && item.name.toLowerCase().includes(searchVal)) || 
+                    (item.set && item.set.toLowerCase().includes(searchVal));
 
-            filteredItems = rawData.filter(item => {
-                const matchSearch = item.name.toLowerCase().includes(search) || 
-                                    item.set.toLowerCase().includes(search);
-                
-                const matchRarity = rarity === 'all' || item.rarity.toLowerCase().includes(rarity);
+                const isFoil = item.foil && item.foil.toLowerCase().includes('foil');
+                let matchesFoil = true;
+                if (activeFoilFilter === 'foil') matchesFoil = isFoil;
+                else if (activeFoilFilter === 'normal') matchesFoil = !isFoil;
 
-                let matchFoil = true;
-                if (activeFoilFilter === 'foil') {
-                    matchFoil = item.foil && item.foil.toLowerCase().includes('foil');
-                } else if (activeFoilFilter === 'normal') {
-                    matchFoil = !item.foil || item.foil.toLowerCase().includes('normal') || item.foil === '';
-                }
-
-                return matchSearch && matchRarity && matchFoil;
+                return matchesSearch && matchesFoil;
             });
 
-            filteredItems.sort((a, b) => {
-                if (sort === 'price-desc') return b.price - a.price;
-                if (sort === 'price-asc') return a.price - b.price;
-                if (sort === 'name-asc') return a.name.localeCompare(b.name);
-                if (sort === 'qty-desc') return b.qty - a.qty;
-                return 0;
-            });
-
-            const showingCount = document.getElementById('showingCount');
-            if (showingCount) showingCount.innerText = filteredItems.length;
+            currentPage = 1;
             renderTable();
         };
 
-        window.setFoilFilter = function(type) {
-            activeFoilFilter = type;
-            document.querySelectorAll('.foil-btn').forEach(btn => {
-                btn.className = "foil-btn px-2.5 py-1 rounded-md bg-brand-dark text-slate-400 hover:text-white border border-brand-border";
+        // Foil finish filter buttons handler
+        window.setFoilFilter = function(filterType) {
+            activeFoilFilter = filterType;
+            ['all', 'foil', 'normal'].forEach(type => {
+                const btn = document.getElementById(`foil-btn-${type}`);
+                if (!btn) return;
+                if (type === filterType) {
+                    btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-purple text-white shadow-sm";
+                } else {
+                    btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-dark text-slate-400 border border-brand-border hover:text-white";
+                }
             });
-            
-            const activeId = type === 'all' ? 'foil-all' : type === 'foil' ? 'foil-yes' : 'foil-no';
-            const activeBtn = document.getElementById(activeId);
-            if (activeBtn) activeBtn.className = "foil-btn px-2.5 py-1 rounded-md bg-brand-purple text-white font-medium";
-
             applyFilters();
         };
 
+        // Automated Fetcher for server-hosted CSV files (valubles_3.csv & Whole collection v4_3.csv)
+        async function loadServerCSV(filePath, targetArrayName) {
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const reader = response.body.getReader();
+                const contentLength = +response.headers.get('Content-Length') || 0;
+                
+                let receivedBytes = 0;
+                let chunks = [];
+                
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+                    chunks.push(value);
+                    receivedBytes += value.length;
+                    
+                    if (contentLength) {
+                        const pct = Math.round((receivedBytes / contentLength) * 100);
+                        const pctEl = document.getElementById('loadingPercentText');
+                        if (pctEl) pctEl.innerText = `${pct}%`;
+                    }
+                }
+
+                let chunksAll = new Uint8Array(receivedBytes);
+                let position = 0;
+                for (let chunk of chunks) {
+                    chunksAll.set(chunk, position);
+                    position += chunk.length;
+                }
+
+                const text = new TextDecoder("utf-8").decode(chunksAll);
+                const lines = text.split(/\r\n|\n/);
+                let items = [];
+
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (!line) continue;
+
+                    const row = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || line.split(',');
+                    const cleanRow = row.map(cell => cell.replace(/^"|"$/g, '').trim());
+
+                    if (cleanRow.length === 0) continue;
+                    if (cleanRow[0].toLowerCase() === 'name' || cleanRow[0].toLowerCase() === 'card name') continue;
+
+                    let name = cleanRow[0] || 'Unknown Card';
+                    let set = cleanRow[1] || 'Unknown Set';
+                    let rarity = cleanRow[2] || 'Common';
+                    let foil = cleanRow[3] || 'Normal';
+                    let condition = cleanRow[4] || 'Near Mint';
+                    let price = parseFloat((cleanRow[5] || '0').replace(/[^0-9.-]+/g, '')) || 0;
+                    let qty = parseInt(cleanRow[6] || '1') || 1;
+
+                    items.push({ name, set, rarity, foil, condition, price, qty });
+                }
+
+                if (targetArrayName === 'valuables') valuablesData = items;
+                else wholeCollectionData = items;
+
+            } catch (err) {
+                console.warn(`Could not load local file ${filePath}:`, err);
+            }
+        }
+
+        async function initInventory() {
+            const statusContainer = document.getElementById('loadingStatusContainer');
+            const statusText = document.getElementById('loadingStatusText');
+
+            if (statusText) statusText.innerHTML = `<i class="fa-solid fa-spinner animate-spin text-brand-purple"></i> <span>Loading Valuables Collection...</span>`;
+            await loadServerCSV('valubles_3.csv', 'valuables');
+
+            if (statusText) statusText.innerHTML = `<i class="fa-solid fa-spinner animate-spin text-brand-cyan"></i> <span>Loading Whole Collection...</span>`;
+            await loadServerCSV('Whole collection v4_3.csv', 'whole');
+
+            updateBadgeCounts();
+            applyFilters();
+
+            if (statusContainer) {
+                statusContainer.classList.add('hidden');
+            }
+        }
+
+        // Render table DOM
         window.renderTable = function() {
             const tbody = document.getElementById('inventoryTableBody');
             if (!tbody) return;
@@ -648,8 +612,14 @@
             if (pageItems.length === 0) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="7" class="p-8 text-center text-slate-400 text-xs">
-                            No cards found matching your search or filter.
+                        <td colspan="7" class="p-12 text-center text-slate-400 text-xs">
+                            <div class="max-w-md mx-auto space-y-3">
+                                <div class="w-12 h-12 rounded-full bg-brand-surface border border-brand-border mx-auto flex items-center justify-center text-brand-purple text-lg">
+                                    <i class="fa-solid fa-boxes-stacked"></i>
+                                </div>
+                                <p class="font-bold text-slate-200">No cards found in this collection.</p>
+                                <p class="text-[11px] text-slate-500">Ensure <code class="text-brand-cyan">valubles_3.csv</code> and <code class="text-brand-cyan">Whole collection v4_3.csv</code> are uploaded to the same folder on your web host.</p>
+                            </div>
                         </td>
                     </tr>
                 `;
@@ -661,7 +631,7 @@
                 tr.className = "hover:bg-brand-surface/70 transition-colors";
 
                 let rarityClass = "text-slate-400 border-slate-700 bg-slate-800/40";
-                const r = item.rarity.toLowerCase();
+                const r = (item.rarity || '').toLowerCase();
                 if (r.includes('mythic')) rarityClass = "text-amber-400 border-amber-500/40 bg-amber-950/20";
                 else if (r.includes('rare')) rarityClass = "text-yellow-300 border-yellow-500/40 bg-yellow-950/20";
                 else if (r.includes('uncommon')) rarityClass = "text-slate-300 border-slate-500/40 bg-slate-800/40";
@@ -681,7 +651,7 @@
                     </td>
                     <td class="p-4">${foilBadge}</td>
                     <td class="p-4 text-slate-400 text-xs">${escapeHtml(item.condition || 'Near Mint')}</td>
-                    <td class="p-4 font-bold text-brand-cyan">$${item.price.toFixed(2)}</td>
+                    <td class="p-4 font-bold text-brand-cyan">$${Number(item.price || 0).toFixed(2)}</td>
                     <td class="p-4 text-center font-bold text-white">${item.qty}</td>
                 `;
                 tbody.appendChild(tr);
@@ -696,8 +666,8 @@
         window.updateBadgeCounts = function() {
             const valBadge = document.getElementById('badge-valuables-count');
             const wholeBadge = document.getElementById('badge-whole-count');
-            if (valBadge) valBadge.innerText = valuablesData.length;
-            if (wholeBadge) wholeBadge.innerText = wholeCollectionData.length;
+            if (valBadge) valBadge.innerText = valuablesData.length.toLocaleString();
+            if (wholeBadge) wholeBadge.innerText = wholeCollectionData.length.toLocaleString();
         };
 
         window.handleContactSubmit = function(event) {
@@ -710,76 +680,6 @@
             event.target.reset();
         };
 
-        function parseCsvContent(csvText) {
-            const lines = csvText.split(/\r?\n/).filter(line => line.trim() !== '');
-            if (lines.length < 2) return [];
-
-            const headerLine = lines[0];
-            const headers = parseCsvRow(headerLine).map(h => h.trim().toLowerCase());
-
-            const nameIdx = headers.findIndex(h => h.includes('name'));
-            const setIdx = headers.findIndex(h => h.includes('set'));
-            const rarityIdx = headers.findIndex(h => h.includes('rarity'));
-            const foilIdx = headers.findIndex(h => h.includes('foil') || h.includes('finish'));
-            const priceIdx = headers.findIndex(h => h.includes('price') || h.includes('value'));
-            const qtyIdx = headers.findIndex(h => h.includes('quantity') || h.includes('qty'));
-            const conditionIdx = headers.findIndex(h => h.includes('condition'));
-
-            const items = [];
-
-            for (let i = 1; i < lines.length; i++) {
-                const row = parseCsvRow(lines[i]);
-                if (!row || row.length < 2) continue;
-
-                const name = nameIdx !== -1 ? row[nameIdx] : row[0];
-                if (!name) continue;
-
-                const set = setIdx !== -1 ? row[setIdx] : (row[1] || 'Standard');
-                const rarity = rarityIdx !== -1 ? row[rarityIdx] : 'rare';
-                const foil = foilIdx !== -1 ? row[foilIdx] : 'Normal';
-                
-                let rawPrice = priceIdx !== -1 ? row[priceIdx] : '0.00';
-                rawPrice = parseFloat(String(rawPrice).replace(/[^0-9.]/g, '')) || 0.00;
-
-                let rawQty = qtyIdx !== -1 ? row[qtyIdx] : '1';
-                rawQty = parseInt(String(rawQty).replace(/[^0-9]/g, '')) || 1;
-
-                const condition = conditionIdx !== -1 ? row[conditionIdx] : 'Near Mint';
-
-                items.push({
-                    name: name,
-                    set: set || 'Unknown Set',
-                    rarity: rarity || 'rare',
-                    foil: foil || 'Normal',
-                    price: rawPrice,
-                    qty: rawQty,
-                    condition: condition
-                });
-            }
-
-            return items;
-        }
-
-        function parseCsvRow(text) {
-            const result = [];
-            let cur = '';
-            let inQuotes = false;
-
-            for (let i = 0; i < text.length; i++) {
-                const c = text[i];
-                if (c === '"') {
-                    inQuotes = !inQuotes;
-                } else if (c === ',' && !inQuotes) {
-                    result.push(cur.trim().replace(/^"(.*)"$/, '$1'));
-                    cur = '';
-                } else {
-                    cur += c;
-                }
-            }
-            result.push(cur.trim().replace(/^"(.*)"$/, '$1'));
-            return result;
-        }
-
         function escapeHtml(str) {
             return String(str || '')
                 .replace(/&/g, "&amp;")
@@ -789,15 +689,10 @@
                 .replace(/'/g, "&#039;");
         }
 
-        // Initialize on DOM load
+        // DOM Initialization
         document.addEventListener('DOMContentLoaded', function() {
-            updateBadgeCounts();
+            initInventory();
             switchTab('valuables');
-
-            const csvInput = document.getElementById('csvFileInput');
-            if (csvInput) {
-                csvInput.addEventListener('change', window.handleCsvUpload);
-            }
         });
     </script>
 </body>
