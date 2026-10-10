@@ -120,7 +120,7 @@
                 <div class="p-6 sm:p-8 rounded-2xl bg-brand-card/90 border border-brand-border/80 shadow-2xl backdrop-blur-md relative group">
                     <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-purple to-brand-cyan rounded-2xl opacity-20 blur group-hover:opacity-30 transition"></div>
                     <p class="text-base sm:text-lg md:text-xl text-slate-200 leading-relaxed font-normal relative z-10">
-                        "We are a small local business selling magic, yugiho, and pokemon cards as well as offering pick your part custom computer builds, diagnostic/troubleshooting, and basic repair."
+                        "We are a small local business selling Magic, Yu-Gi-Oh!, and Pokémon cards, as well as offering pick-your-part custom computer builds, diagnostics and troubleshooting, and basic repairs."
                     </p>
                 </div>
 
@@ -150,7 +150,17 @@
                     <div class="p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-purple/50 transition-all duration-300 shadow-xl flex flex-col justify-between">
                         <div>
                             <div class="w-14 h-14 rounded-2xl bg-brand-purple/10 border border-brand-purple/30 text-brand-purple flex items-center justify-center text-2xl mb-6">
-                                <i class="fa-solid fa-cards"></i>
+                                <svg viewBox="0 0 32 32" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true">
+                                    <!-- card behind -->
+                                    <rect x="6" y="5" width="15" height="21" rx="2.5" transform="rotate(-14 13.5 15.5)" fill="#182032" opacity="0.55"/>
+                                    <!-- card back (front-most) -->
+                                    <g transform="rotate(10 20 16)">
+                                        <rect x="12.5" y="5" width="15" height="21" rx="2.5" fill="#182032"/>
+                                        <rect x="14.5" y="7" width="11" height="17" rx="1.5" stroke-width="1"/>
+                                        <path d="M20 10.5 L23.2 15.5 L20 20.5 L16.8 15.5 Z" fill="currentColor" fill-opacity="0.25" stroke-width="1"/>
+                                        <circle cx="20" cy="15.5" r="1" fill="currentColor" stroke="none"/>
+                                    </g>
+                                </svg>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-3 font-tech">Trading Cards & Singles</h3>
                             <p class="text-slate-300 text-sm leading-relaxed mb-6">
@@ -251,20 +261,12 @@
             </div>
 
             <!-- Loading Status Banner (Replaces Upload Bar) -->
-            <div id="loadingStatusContainer" class="p-4 rounded-xl bg-brand-surface border border-brand-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-semibold text-slate-300">
+            <div id="loadingStatusContainer" class="p-4 rounded-xl bg-brand-surface border border-brand-border flex items-center justify-between text-xs font-semibold text-slate-300">
                 <span id="loadingStatusText" class="flex items-center space-x-2">
                     <i class="fa-solid fa-spinner animate-spin text-brand-cyan"></i>
                     <span>Loading store inventory database...</span>
                 </span>
-                <div class="flex items-center space-x-3">
-                    <span id="loadingPercentText" class="font-mono text-brand-cyan">0%</span>
-                    <!-- Manual Upload Fallback Trigger -->
-                    <label id="manualCsvBtn" class="hidden cursor-pointer px-3 py-1.5 rounded-lg bg-brand-purple text-white hover:bg-brand-accent transition text-xs flex items-center space-x-1">
-                        <i class="fa-solid fa-file-csv"></i>
-                        <span>Load CSV Manually</span>
-                        <input type="file" id="manualCsvInput" accept=".csv" multiple onchange="handleManualCSVUpload(event)" class="hidden">
-                    </label>
-                </div>
+                <span id="loadingPercentText" class="font-mono text-brand-cyan">0%</span>
             </div>
 
             <!-- Filter Controls Bar -->
@@ -291,8 +293,6 @@
                                 <th class="p-4">Rarity</th>
                                 <th class="p-4">Finish</th>
                                 <th class="p-4">Condition</th>
-                                <th class="p-4">Price</th>
-                                <th class="p-4 text-center">Qty</th>
                             </tr>
                         </thead>
                         <tbody id="inventoryTableBody" class="divide-y divide-brand-border/40 font-medium">
@@ -360,15 +360,11 @@
                         <form onsubmit="handleContactSubmit(event)" class="space-y-4">
                             <div>
                                 <label class="block text-xs font-semibold text-slate-300 mb-1">Your Name</label>
-                                <input type="text" id="contactName" required placeholder="John Doe" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-purple">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-300 mb-1">Your Email</label>
-                                <input type="email" id="contactEmail" required placeholder="customer@example.com" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-purple">
+                                <input type="text" required placeholder="John Doe" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-purple">
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-slate-300 mb-1">Subject / Interest</label>
-                                <select id="contactSubject" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-purple">
+                                <select class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-purple">
                                     <option>Card Inquiry / Purchase</option>
                                     <option>Custom PC Build Quote</option>
                                     <option>PC Repair / Diagnostic</option>
@@ -377,11 +373,10 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-slate-300 mb-1">Message</label>
-                                <textarea id="contactMessage" rows="3" required placeholder="Tell us what cards or PC specs you're looking for..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-purple"></textarea>
+                                <textarea rows="3" required placeholder="Tell us what cards or PC specs you're looking for..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-purple"></textarea>
                             </div>
-                            <button type="submit" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-accent text-white font-bold text-xs hover:opacity-90 transition flex items-center justify-center space-x-2">
-                                <i class="fa-solid fa-envelope"></i>
-                                <span>Send Inquiry via Email</span>
+                            <button type="submit" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-accent text-white font-bold text-xs hover:opacity-90 transition">
+                                Send Inquiry
                             </button>
                             <p id="formStatus" class="hidden text-[11px] text-emerald-400 text-center mt-2"></p>
                         </form>
@@ -518,139 +513,131 @@
             applyFilters();
         };
 
-        // Automated Fetcher with URL encoding and fallback handling
+        // RFC 4180-style CSV parser (handles quoted fields with commas, quotes, and newlines)
+        function parseCSV(text) {
+            const rows = [];
+            let row = [], field = '', inQuotes = false;
+            if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
+            for (let i = 0; i < text.length; i++) {
+                const c = text[i];
+                if (inQuotes) {
+                    if (c === '"') {
+                        if (text[i + 1] === '"') { field += '"'; i++; }
+                        else inQuotes = false;
+                    } else field += c;
+                } else if (c === '"') inQuotes = true;
+                else if (c === ',') { row.push(field); field = ''; }
+                else if (c === '\n' || c === '\r') {
+                    if (c === '\r' && text[i + 1] === '\n') i++;
+                    row.push(field); rows.push(row); row = []; field = '';
+                } else field += c;
+            }
+            if (field || row.length) { row.push(field); rows.push(row); }
+            return rows;
+        }
+
+        // Automated Fetcher for server-hosted CSV files (valubles_3.csv & Whole collection v4_3.csv)
         async function loadServerCSV(filePath, targetArrayName) {
             try {
-                // Properly encode spaces and special characters for Netlify (e.g. Whole%20collection%20v4_3.csv)
-                const safePath = encodeURI(filePath);
-                const response = await fetch(safePath, { cache: "no-cache" });
+                // Try the exact name first, then common renamed variants (spaces <-> underscores)
+                const candidates = [filePath, filePath.replace(/ /g, '_'), filePath.replace(/ /g, '-')];
+                let response = null;
+                for (const cand of candidates) {
+                    try {
+                        const r = await fetch(encodeURI(cand));
+                        if (r.ok) { response = r; break; }
+                    } catch (e) { /* try next */ }
+                }
+                if (!response) throw new Error('file not found');
+                const reader = response.body.getReader();
+                const contentLength = +response.headers.get('Content-Length') || 0;
                 
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status} when fetching ${safePath}`);
-                }
-
-                const reader = response.body ? response.body.getReader() : null;
-                let text = "";
-
-                if (reader) {
-                    const contentLength = +response.headers.get('Content-Length') || 0;
-                    let receivedBytes = 0;
-                    let chunks = [];
+                let receivedBytes = 0;
+                let chunks = [];
+                
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+                    chunks.push(value);
+                    receivedBytes += value.length;
                     
-                    while (true) {
-                        const { done, value } = await reader.read();
-                        if (done) break;
-                        chunks.push(value);
-                        receivedBytes += value.length;
-                        
-                        if (contentLength) {
-                            const pct = Math.round((receivedBytes / contentLength) * 100);
-                            const pctEl = document.getElementById('loadingPercentText');
-                            if (pctEl) pctEl.innerText = `${pct}%`;
-                        }
+                    if (contentLength) {
+                        const pct = Math.round((receivedBytes / contentLength) * 100);
+                        const pctEl = document.getElementById('loadingPercentText');
+                        if (pctEl) pctEl.innerText = `${pct}%`;
                     }
-
-                    let chunksAll = new Uint8Array(receivedBytes);
-                    let position = 0;
-                    for (let chunk of chunks) {
-                        chunksAll.set(chunk, position);
-                        position += chunk.length;
-                    }
-
-                    text = new TextDecoder("utf-8").decode(chunksAll);
-                } else {
-                    text = await response.text();
                 }
 
-                const items = parseCSVText(text);
+                let chunksAll = new Uint8Array(receivedBytes);
+                let position = 0;
+                for (let chunk of chunks) {
+                    chunksAll.set(chunk, position);
+                    position += chunk.length;
+                }
+
+                const text = new TextDecoder("utf-8").decode(chunksAll);
+                const rows = parseCSV(text);
+                if (rows.length === 0) return;
+
+                // Map columns by header name (ManaBox export format)
+                const header = rows[0].map(h => h.trim().toLowerCase());
+                const col = (...names) => {
+                    for (const n of names) {
+                        const idx = header.indexOf(n);
+                        if (idx !== -1) return idx;
+                    }
+                    return -1;
+                };
+                const iName = col('name', 'card name');
+                const iSet = col('set name', 'set', 'set code');
+                const iRarity = col('rarity');
+                const iFoil = col('foil', 'finish');
+                const iCond = col('condition');
+                const iPrice = col('purchase price', 'price');
+                const iQty = col('quantity', 'qty');
+                const get = (row, i) => (i >= 0 && row[i] != null ? row[i].trim() : '');
+                const titleCase = str => str.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+
+                let items = [];
+                for (let r = 1; r < rows.length; r++) {
+                    const row = rows[r];
+                    if (!row.length || (row.length === 1 && !row[0].trim())) continue;
+
+                    const name = get(row, iName) || 'Unknown Card';
+                    const set = get(row, iSet) || 'Unknown Set';
+                    const rarity = titleCase(get(row, iRarity) || 'common');
+                    const foilRaw = get(row, iFoil).toLowerCase();
+                    const foil = foilRaw && foilRaw !== 'normal' && foilRaw !== 'false' ? 'Foil' : 'Normal';
+                    const condition = titleCase(get(row, iCond) || 'near_mint');
+                    const price = parseFloat(get(row, iPrice).replace(/[^0-9.-]+/g, '')) || 0;
+                    const qty = parseInt(get(row, iQty), 10) || 1;
+
+                    items.push({ name, set, rarity, foil, condition, price, qty });
+                }
 
                 if (targetArrayName === 'valuables') valuablesData = items;
                 else wholeCollectionData = items;
 
-                return true;
-
             } catch (err) {
-                console.warn(`Could not load CSV from ${filePath}:`, err);
-                return false;
+                console.warn(`Could not load local file ${filePath}:`, err);
             }
         }
-
-        // Helper function to parse CSV raw text safely
-        function parseCSVText(text) {
-            const lines = text.split(/\r\n|\n/);
-            let items = [];
-
-            for (let i = 0; i < lines.length; i++) {
-                const line = lines[i].trim();
-                if (!line) continue;
-
-                const row = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || line.split(',');
-                const cleanRow = row.map(cell => cell.replace(/^"|"$/g, '').trim());
-
-                if (cleanRow.length === 0) continue;
-                if (cleanRow[0].toLowerCase() === 'name' || cleanRow[0].toLowerCase() === 'card name') continue;
-
-                let name = cleanRow[0] || 'Unknown Card';
-                let set = cleanRow[1] || 'Unknown Set';
-                let rarity = cleanRow[2] || 'Common';
-                let foil = cleanRow[3] || 'Normal';
-                let condition = cleanRow[4] || 'Near Mint';
-                let price = parseFloat((cleanRow[5] || '0').replace(/[^0-9.-]+/g, '')) || 0;
-                let qty = parseInt(cleanRow[6] || '1') || 1;
-
-                items.push({ name, set, rarity, foil, condition, price, qty });
-            }
-            return items;
-        }
-
-        // Fallback manually triggered upload function
-        window.handleManualCSVUpload = function(event) {
-            const files = event.target.files;
-            if (!files || files.length === 0) return;
-
-            Array.from(files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const text = e.target.result;
-                    const parsed = parseCSVText(text);
-                    const filename = file.name.toLowerCase();
-
-                    if (filename.includes('valuble') || filename.includes('valuable')) {
-                        valuablesData = parsed;
-                    } else {
-                        wholeCollectionData = parsed;
-                    }
-                    updateBadgeCounts();
-                    applyFilters();
-                };
-                reader.readAsText(file);
-            });
-
-            const statusContainer = document.getElementById('loadingStatusContainer');
-            if (statusContainer) statusContainer.classList.add('hidden');
-        };
 
         async function initInventory() {
             const statusContainer = document.getElementById('loadingStatusContainer');
             const statusText = document.getElementById('loadingStatusText');
-            const manualBtn = document.getElementById('manualCsvBtn');
 
             if (statusText) statusText.innerHTML = `<i class="fa-solid fa-spinner animate-spin text-brand-purple"></i> <span>Loading Valuables Collection...</span>`;
-            const valSuccess = await loadServerCSV('valubles_3.csv', 'valuables');
+            await loadServerCSV('valubles_3.csv', 'valuables');
 
             if (statusText) statusText.innerHTML = `<i class="fa-solid fa-spinner animate-spin text-brand-cyan"></i> <span>Loading Whole Collection...</span>`;
-            const wholeSuccess = await loadServerCSV('Whole collection v4_3.csv', 'whole');
+            await loadServerCSV('Whole collection v4_3.csv', 'whole');
 
             updateBadgeCounts();
             applyFilters();
 
-            if (valSuccess && wholeSuccess) {
-                if (statusContainer) statusContainer.classList.add('hidden');
-            } else {
-                if (statusText) {
-                    statusText.innerHTML = `<i class="fa-solid fa-circle-exclamation text-amber-400"></i> <span class="text-amber-300">CSV files not detected on server. Rename or select them manually:</span>`;
-                }
-                if (manualBtn) manualBtn.classList.remove('hidden');
+            if (statusContainer) {
+                statusContainer.classList.add('hidden');
             }
         }
 
@@ -679,7 +666,7 @@
             if (pageItems.length === 0) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="7" class="p-12 text-center text-slate-400 text-xs">
+                        <td colspan="5" class="p-12 text-center text-slate-400 text-xs">
                             <div class="max-w-md mx-auto space-y-3">
                                 <div class="w-12 h-12 rounded-full bg-brand-surface border border-brand-border mx-auto flex items-center justify-center text-brand-purple text-lg">
                                     <i class="fa-solid fa-boxes-stacked"></i>
@@ -718,8 +705,6 @@
                     </td>
                     <td class="p-4">${foilBadge}</td>
                     <td class="p-4 text-slate-400 text-xs">${escapeHtml(item.condition || 'Near Mint')}</td>
-                    <td class="p-4 font-bold text-brand-cyan">$${Number(item.price || 0).toFixed(2)}</td>
-                    <td class="p-4 text-center font-bold text-white">${item.qty}</td>
                 `;
                 tbody.appendChild(tr);
             });
@@ -739,35 +724,27 @@
 
         window.handleContactSubmit = function(event) {
             event.preventDefault();
-
-            // Updated store email address
-            const storeEmail = "cj098756@gmail.com";
-
-            const name = document.getElementById('contactName')?.value || '';
-            const senderEmail = document.getElementById('contactEmail')?.value || '';
-            const subject = document.getElementById('contactSubject')?.value || 'Inquiry';
-            const message = document.getElementById('contactMessage')?.value || '';
-
-            const bodyText = `Name: ${name}\nEmail: ${senderEmail}\nInterest: ${subject}\n\nMessage:\n${message}`;
-
-            // Open user's default email program addressed to the updated store email
-            const mailtoUrl = `mailto:${storeEmail}?subject=${encodeURIComponent(subject + ' - ' + name)}&body=${encodeURIComponent(bodyText)}`;
-            window.location.href = mailtoUrl;
-
             const status = document.getElementById('formStatus');
             if (status) {
-                status.innerText = "Opening your email app to send message directly to " + storeEmail;
+                status.innerText = "Thank you! Your message has been sent to Two Brothers Cards and Computers.";
                 status.classList.remove('hidden');
             }
+            event.target.reset();
         };
 
         function escapeHtml(str) {
-            return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+            return String(str || '')
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
         }
 
-        // Initialize inventory on load
-        window.addEventListener('DOMContentLoaded', () => {
+        // DOM Initialization
+        document.addEventListener('DOMContentLoaded', function() {
             initInventory();
+            switchTab('valuables');
         });
     </script>
 </body>
