@@ -1,30 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2 Brother's Cards and Computers | TCG & Custom PC Specialist</title>
+    <title>Two Brothers Cards and Computers</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            dark: '#0B0F19',
-                            card: '#131A2A',
-                            border: '#1E293B',
-                            purple: '#A855F7',
-                            cyan: '#06B6D4',
-                            gold: '#EAB308',
-                            blue: '#3B82F6'
+                            dark: '#0a0d14',
+                            surface: '#121826',
+                            card: '#182032',
+                            border: '#243049',
+                            purple: '#a855f7',
+                            cyan: '#06b6d4',
+                            magenta: '#ec4899',
+                            accent: '#3b82f6',
+                            mythic: '#f97316',
+                            rare: '#eab308',
+                            uncommon: '#94a3b8',
+                            common: '#64748b'
                         }
                     },
                     fontFamily: {
@@ -36,976 +43,762 @@
         }
     </script>
     <style>
-        .glow-purple { box-shadow: 0 0 25px -5px rgba(168, 85, 247, 0.4); }
-        .glow-cyan { box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.4); }
-        .text-glow-cyan { text-shadow: 0 0 10px rgba(6, 182, 212, 0.6); }
-        .text-glow-purple { text-shadow: 0 0 10px rgba(168, 85, 247, 0.6); }
         .bg-grid-pattern {
             background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-            background-size: 24px 24px;
+            background-size: 28px 28px;
         }
+        .glow-purple { box-shadow: 0 0 30px -5px rgba(168, 85, 247, 0.3); }
+        .glow-cyan { box-shadow: 0 0 30px -5px rgba(6, 182, 212, 0.3); }
+        
+        /* Custom scrollbar for tables */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0d14; }
+        ::-webkit-scrollbar-thumb { background: #243049; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a855f7; }
     </style>
 </head>
-<body class="bg-brand-dark text-slate-100 font-sans antialiased bg-grid-pattern selection:bg-brand-cyan selection:text-black">
+<body class="bg-brand-dark text-slate-100 font-sans antialiased bg-grid-pattern min-h-screen flex flex-col selection:bg-brand-purple selection:text-white">
 
     <!-- Navigation Header -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-brand-dark/80 border-b border-brand-border/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Brand Logo -->
-                <a href="#" class="flex items-center space-x-3 group">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-purple to-brand-cyan p-0.5 flex items-center justify-center group-hover:scale-105 transition-transform">
-                        <div class="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center">
-                            <i class="fa-solid fa-layer-group text-brand-cyan group-hover:text-brand-purple transition-colors"></i>
-                        </div>
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-brand-dark/90 border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-purple via-brand-accent to-brand-cyan p-0.5 shadow-lg group-hover:scale-105 transition-transform duration-200">
+                    <div class="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center">
+                        <i class="fa-solid fa-layer-group text-brand-cyan group-hover:text-brand-purple transition-colors text-lg"></i>
                     </div>
-                    <div>
-                        <span class="font-tech font-bold text-lg sm:text-xl tracking-wider text-white flex items-center gap-1.5">
-                            2 BROTHER'S
-                        </span>
-                        <span class="text-xs text-slate-400 block -mt-1 tracking-widest uppercase font-semibold">
-                            <span class="text-brand-purple">CARDS</span> & <span class="text-brand-cyan">COMPUTERS</span>
-                        </span>
-                    </div>
+                </div>
+                <div>
+                    <span class="font-tech font-extrabold text-lg sm:text-xl tracking-wider text-white block">TWO BROTHERS</span>
+                    <span class="text-[10px] sm:text-xs text-slate-400 block -mt-1 tracking-widest uppercase font-semibold">Cards & Computers</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="text-slate-300 hover:text-brand-cyan transition-colors">About Us</a>
+                <a href="#services" class="text-slate-300 hover:text-brand-cyan transition-colors">Services</a>
+                <a href="#inventory" class="text-slate-300 hover:text-brand-cyan transition-colors flex items-center space-x-1">
+                    <span>Card Collections</span>
+                    <span class="text-[10px] bg-brand-purple/20 text-brand-purple px-1.5 py-0.5 rounded border border-brand-purple/30">Valuables</span>
                 </a>
+                <a href="#events" class="text-slate-300 hover:text-brand-cyan transition-colors">Events</a>
+                <a href="#contact" class="px-4 py-2 rounded-lg bg-gradient-to-r from-brand-purple to-brand-accent text-white font-medium hover:opacity-90 shadow-md transition-all">Contact Us</a>
+            </nav>
 
-                <!-- Desktop Nav Navigation -->
-                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                    <a href="#tcg-hub" class="hover:text-brand-purple transition-colors flex items-center gap-1.5">
-                        <i class="fa-solid fa-cards text-brand-purple"></i> TCG Store
-                    </a>
-                    <a href="#pc-services" class="hover:text-brand-cyan transition-colors flex items-center gap-1.5">
-                        <i class="fa-solid fa-microchip text-brand-cyan"></i> PC Builds & Repairs
-                    </a>
-                    <a href="#pc-builder" class="hover:text-brand-cyan transition-colors flex items-center gap-1.5">
-                        <i class="fa-solid fa-sliders text-brand-cyan"></i> Build Estimator
-                    </a>
-                    <a href="#trade-in" class="hover:text-brand-gold transition-colors flex items-center gap-1.5">
-                        <i class="fa-solid fa-rotate-left text-brand-gold"></i> Buylist & Trade-In
-                    </a>
-                    <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-                </nav>
-
-                <!-- Call To Action Button -->
-                <div class="hidden lg:flex items-center gap-3">
-                    <a href="#pc-builder" class="px-4 py-2 text-xs font-tech font-bold rounded-lg border border-brand-cyan text-brand-cyan hover:bg-brand-cyan hover:text-black transition-all duration-200 glow-cyan">
-                        CUSTOM PC BUILDER
-                    </a>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-brand-card">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
+            <!-- Mobile menu button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-brand-surface">
+                <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+            </button>
         </div>
 
-        <!-- Mobile Menu Nav -->
-        <div id="mobile-menu" class="hidden md:hidden border-b border-brand-border bg-brand-card/95 px-4 pt-2 pb-6 space-y-3">
-            <a href="#tcg-hub" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-200 hover:bg-brand-purple/20 hover:text-brand-purple">
-                <i class="fa-solid fa-cards mr-2 text-brand-purple"></i> TCG Store & League
-            </a>
-            <a href="#pc-services" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-200 hover:bg-brand-cyan/20 hover:text-brand-cyan">
-                <i class="fa-solid fa-microchip mr-2 text-brand-cyan"></i> PC Repairs & Upgrades
-            </a>
-            <a href="#pc-builder" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-200 hover:bg-brand-cyan/20 hover:text-brand-cyan">
-                <i class="fa-solid fa-sliders mr-2 text-brand-cyan"></i> PC Build Estimator
-            </a>
-            <a href="#trade-in" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-200 hover:bg-brand-gold/20 hover:text-brand-gold">
-                <i class="fa-solid fa-rotate-left mr-2 text-brand-gold"></i> Trade-In & Buylist Calculator
-            </a>
-            <a href="#contact" class="mobile-link block px-3 py-2 rounded-md font-medium text-slate-200 hover:bg-slate-800">
-                <i class="fa-solid fa-location-dot mr-2"></i> Location & Hours
-            </a>
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-brand-border bg-brand-surface px-4 py-4 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-brand-cyan">About Us</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-brand-cyan">Services</a>
+            <a href="#inventory" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-brand-cyan">Card Inventory</a>
+            <a href="#events" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-brand-cyan">Events</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-brand-purple font-semibold">Contact Store</a>
         </div>
     </header>
 
-    <!-- Hero Banner -->
-    <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-16 px-4">
-        <!-- Ambient Lighting Spheres -->
-        <div class="absolute top-1/4 left-10 w-96 h-96 bg-brand-purple/20 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-10 right-10 w-96 h-96 bg-brand-cyan/20 rounded-full blur-[120px] pointer-events-none"></div>
-
-        <div class="max-w-6xl mx-auto text-center relative z-10">
-            <!-- Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 border border-slate-700 text-xs font-semibold uppercase tracking-wider mb-8 text-slate-300">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                Local Gaming Hub & Certified Tech Repair Shop
-            </div>
-
-            <!-- Title -->
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-tech font-black tracking-tight text-white mb-6 uppercase">
-                2 BROTHER'S <br class="hidden sm:inline" />
-                <span class="bg-gradient-to-r from-brand-purple via-pink-500 to-brand-cyan bg-clip-text text-transparent">
-                    CARDS & COMPUTERS
-                </span>
-            </h1>
-
-            <!-- Subtitle -->
-            <p class="max-w-3xl mx-auto text-lg sm:text-xl text-slate-300 font-normal leading-relaxed mb-10">
-                From <span class="text-brand-purple font-semibold">Mana, Deck Tech & Mythic Singles</span> to 
-                <span class="text-brand-cyan font-semibold">High-FPS Benchmarks, Clean Cable Routing & Hardware Repairs</span>. 
-                Your ultimate twin-passion shop for tabletop victory and PC master race dominance.
-            </p>
-
-            <!-- Dual Action CTA Buttons -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#tcg-hub" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-purple to-indigo-600 text-white font-tech font-bold text-sm tracking-wider uppercase hover:opacity-90 hover:scale-105 transition-all duration-200 glow-purple flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-square-poll-vertical"></i> Explore TCG & Singles
-                </a>
-                <a href="#pc-builder" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-cyan to-blue-600 text-slate-950 font-tech font-bold text-sm tracking-wider uppercase hover:opacity-90 hover:scale-105 transition-all duration-200 glow-cyan flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-desktop"></i> Custom PC Estimator
-                </a>
-            </div>
-
-            <!-- Stats Bar -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 max-w-4xl mx-auto border-t border-brand-border/80 pt-8">
-                <div class="p-3">
-                    <p class="font-tech text-2xl md:text-3xl font-bold text-brand-purple">100k+</p>
-                    <p class="text-xs text-slate-400 uppercase mt-1 font-semibold">TCG Cards in Stock</p>
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="about" class="py-16 md:py-24 px-4 sm:px-6 relative overflow-hidden">
+            <div class="max-w-4xl mx-auto text-center space-y-8 relative z-10">
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-xs font-medium text-brand-cyan shadow-inner">
+                    <span class="w-2 h-2 rounded-full bg-brand-cyan animate-ping"></span>
+                    <span>Local TCG & Custom PC Specialist</span>
                 </div>
-                <div class="p-3">
-                    <p class="font-tech text-2xl md:text-3xl font-bold text-brand-cyan">500+</p>
-                    <p class="text-xs text-slate-400 uppercase mt-1 font-semibold">Custom PC Builds</p>
+
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight font-tech">
+                    Welcome to <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple via-brand-cyan to-brand-magenta">Two Brothers Cards and Computers!</span>
+                </h1>
+
+                <!-- Exact statement as requested -->
+                <div class="p-6 sm:p-8 rounded-2xl bg-brand-card/90 border border-brand-border/80 shadow-2xl backdrop-blur-md relative group">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-purple to-brand-cyan rounded-2xl opacity-20 blur group-hover:opacity-30 transition"></div>
+                    <p class="text-base sm:text-lg md:text-xl text-slate-200 leading-relaxed font-normal relative z-10">
+                        "We are a small local business selling magic, yugiho, and pokemon cards as well as offering pick your part custom computer builds, diagnostic/troubleshooting, and basic repair."
+                    </p>
                 </div>
-                <div class="p-3">
-                    <p class="font-tech text-2xl md:text-3xl font-bold text-brand-gold">24-48 HR</p>
-                    <p class="text-xs text-slate-400 uppercase mt-1 font-semibold">Typical PC Repair</p>
-                </div>
-                <div class="p-3">
-                    <p class="font-tech text-2xl md:text-3xl font-bold text-emerald-400">Weekly</p>
-                    <p class="text-xs text-slate-400 uppercase mt-1 font-semibold">Official Tournaments</p>
+
+                <div class="flex flex-wrap justify-center gap-4 pt-2">
+                    <a href="#inventory" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-accent text-white font-semibold shadow-lg hover:shadow-brand-purple/25 hover:scale-[1.02] transition-all flex items-center space-x-2">
+                        <i class="fa-solid fa-gem text-brand-cyan"></i>
+                        <span>Browse Valuables & Collection</span>
+                    </a>
+                    <a href="#services" class="px-6 py-3.5 rounded-xl bg-brand-card border border-brand-border text-slate-200 font-semibold hover:border-brand-cyan hover:text-brand-cyan hover:scale-[1.02] transition-all flex items-center space-x-2">
+                        <i class="fa-solid fa-laptop-code text-brand-purple"></i>
+                        <span>PC Build & Repair Services</span>
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- TCG Store & Collectibles Section -->
-    <section id="tcg-hub" class="py-20 bg-brand-card/50 border-t border-b border-brand-border relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-                <div>
-                    <span class="text-brand-purple font-tech text-xs tracking-widest uppercase font-bold">Tabletop & Collectibles</span>
-                    <h2 class="text-3xl sm:text-4xl font-tech font-extrabold text-white mt-1">THE TCG SHOWCASE</h2>
+        <!-- Core Services Section -->
+        <section id="services" class="py-16 bg-brand-surface/60 border-y border-brand-border/60 px-4 sm:px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-2xl sm:text-4xl font-bold font-tech text-white">Our Core Services</h2>
+                    <p class="text-slate-400 mt-2 text-sm sm:text-base max-w-xl mx-auto">Providing high-grade trading cards and full-service desktop PC hardware support under one roof.</p>
                 </div>
-                <p class="text-slate-400 max-w-md mt-2 md:mt-0 text-sm">
-                    Browse live singles, sealed booster boxes, graded slab inventory, or join our community weekly tournaments.
-                </p>
-            </div>
 
-            <!-- TCG Game Filter Buttons -->
-            <div class="flex flex-wrap items-center gap-3 mb-8">
-                <button onclick="filterTCG('all')" class="tcg-btn active bg-brand-purple text-white px-5 py-2.5 rounded-lg font-tech text-xs font-bold uppercase transition-all" data-game="all">
-                    All Games
-                </button>
-                <button onclick="filterTCG('mtg')" class="tcg-btn bg-brand-dark text-slate-300 border border-brand-border hover:border-brand-purple px-5 py-2.5 rounded-lg font-tech text-xs font-bold uppercase transition-all" data-game="mtg">
-                    <i class="fa-solid fa-fire text-amber-500 mr-1"></i> Magic: The Gathering
-                </button>
-                <button onclick="filterTCG('pokemon')" class="tcg-btn bg-brand-dark text-slate-300 border border-brand-border hover:border-brand-gold px-5 py-2.5 rounded-lg font-tech text-xs font-bold uppercase transition-all" data-game="pokemon">
-                    <i class="fa-solid fa-bolt text-yellow-400 mr-1"></i> Pokémon
-                </button>
-                <button onclick="filterTCG('yugioh')" class="tcg-btn bg-brand-dark text-slate-300 border border-brand-border hover:border-brand-cyan px-5 py-2.5 rounded-lg font-tech text-xs font-bold uppercase transition-all" data-game="yugioh">
-                    <i class="fa-solid fa-eye text-violet-400 mr-1"></i> Yu-Gi-Oh!
-                </button>
-            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- TCG Card Sales Box -->
+                    <div class="p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-purple/50 transition-all duration-300 shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-brand-purple/10 border border-brand-purple/30 text-brand-purple flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-cards"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-3 font-tech">Trading Cards & Singles</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                We buy, sell, and trade single cards, foils, booster boxes, and raw staples across all three major trading card games:
+                            </p>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 rounded-full bg-brand-purple"></div>
+                                    <span><strong>Magic: The Gathering</strong> – Commander staples, foils, mythics & singles</span>
+                                </li>
+                                <li class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 rounded-full bg-amber-400"></div>
+                                    <span><strong>Yu-Gi-Oh!</strong> – Secret Rares, structural decks, & competitive playsets</span>
+                                </li>
+                                <li class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 rounded-full bg-brand-cyan"></div>
+                                    <span><strong>Pokémon TCG</strong> – Ultra Rares, Illustration Rares, & boosters</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-brand-border/60 flex items-center justify-between">
+                            <span class="text-xs text-slate-400">Live Inventory Active Below</span>
+                            <a href="#inventory" class="text-xs font-semibold text-brand-cyan hover:underline flex items-center space-x-1">
+                                <span>Check Stock</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
 
-            <!-- TCG Inventory Grid -->
-            <div id="tcg-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Cards rendered dynamically JS -->
+                    <!-- Computer Services Box -->
+                    <div class="p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-cyan/50 transition-all duration-300 shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-3 font-tech">PC Builds & Repair</h3>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                                Professional, local desktop hardware technical assistance without corporate markup:
+                            </p>
+                            <ul class="space-y-3 text-sm text-slate-300">
+                                <li class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 rounded-full bg-brand-cyan"></div>
+                                    <span><strong>Pick-Your-Part Custom Builds</strong> – Bring your list or let us consult and build</span>
+                                </li>
+                                <li class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 rounded-full bg-brand-purple"></div>
+                                    <span><strong>Diagnostic & Troubleshooting</strong> – No-boot, overheating, & BSOD resolution</span>
+                                </li>
+                                <li class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 rounded-full bg-brand-magenta"></div>
+                                    <span><strong>Basic Hardware Repair</strong> – GPU swaps, RAM upgrades, thermal repasting & cleanings</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-brand-border/60 flex items-center justify-between">
+                            <span class="text-xs text-slate-400">Local Service in Carl Junction / Joplin</span>
+                            <a href="#contact" class="text-xs font-semibold text-brand-purple hover:underline flex items-center space-x-1">
+                                <span>Request Quote</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <!-- Weekly League & Tournament Schedule -->
-            <div class="mt-16 bg-brand-dark/90 border border-brand-border rounded-2xl p-6 sm:p-8 relative overflow-hidden">
-                <div class="absolute right-0 top-0 w-64 h-64 bg-brand-purple/10 rounded-full blur-3xl pointer-events-none"></div>
+        <!-- Physical Card Inventory Section -->
+        <section id="inventory" class="py-16 px-4 sm:px-6">
+            <div class="max-w-7xl mx-auto space-y-8">
                 
-                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
+                <!-- Section Header & Collection Switch Tabs -->
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-brand-border pb-6">
                     <div>
-                        <span class="px-3 py-1 rounded-md bg-brand-purple/20 text-brand-purple text-xs font-tech font-bold uppercase">Community Hub</span>
-                        <h3 class="text-2xl font-tech font-bold text-white mt-2">Weekly Local Tournament Schedule</h3>
-                        <p class="text-slate-400 text-sm mt-1">Sanctioned events, casual commander nights, and cash prize tournaments.</p>
-                    </div>
-                    <button onclick="openModal('tournament-modal')" class="self-start lg:self-auto px-5 py-2.5 rounded-lg bg-brand-purple hover:bg-purple-600 text-white font-tech text-xs font-bold uppercase transition-all">
-                        Register / Reserve Seat
-                    </button>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <!-- MTG Night -->
-                    <div class="bg-brand-card p-5 rounded-xl border border-brand-border/60 hover:border-brand-purple/60 transition-all">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-xs font-bold text-amber-400 font-tech uppercase">MTG Friday Night Magic</span>
-                            <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300">Fri 6:30 PM</span>
+                        <div class="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-brand-cyan">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                            <span>Card Stock Hub</span>
                         </div>
-                        <h4 class="font-bold text-white mb-1">Modern & Commander Pods</h4>
-                        <p class="text-xs text-slate-400 mb-4">$10 Entry • Pack-per-win + Promo Packs</p>
-                        <div class="flex justify-between items-center text-xs text-slate-300 border-t border-slate-800 pt-3">
-                            <span>Format: Constructed</span>
-                            <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-users text-xs mr-1"></i> 24 Seats Open</span>
-                        </div>
+                        <h2 class="text-2xl sm:text-4xl font-bold font-tech text-white mt-1">Physical Card Inventory</h2>
+                        <p class="text-slate-400 text-sm mt-1">Explore our high-value cards or browse the full collection database.</p>
                     </div>
 
-                    <!-- Pokemon League -->
-                    <div class="bg-brand-card p-5 rounded-xl border border-brand-border/60 hover:border-brand-gold/60 transition-all">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-xs font-bold text-yellow-400 font-tech uppercase">Pokémon Saturday League</span>
-                            <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300">Sat 1:00 PM</span>
-                        </div>
-                        <h4 class="font-bold text-white mb-1">Standard League Challenge</h4>
-                        <p class="text-xs text-slate-400 mb-4">$8 Entry • Championship Points + Booster Packs</p>
-                        <div class="flex justify-between items-center text-xs text-slate-300 border-t border-slate-800 pt-3">
-                            <span>Format: Standard</span>
-                            <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-users text-xs mr-1"></i> 16 Seats Open</span>
-                        </div>
-                    </div>
+                    <!-- Main Collection Tabs: Valuables vs Whole Collection -->
+                    <div class="flex flex-wrap items-center gap-3">
+                        <button onclick="switchTab('valuables')" id="tab-valuables" 
+                                class="px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-gradient-to-r from-brand-purple to-purple-600 text-white shadow-lg glow-purple">
+                            <i class="fa-solid fa-gem text-amber-300"></i>
+                            <span>Valuables Collection</span>
+                            <span id="badge-valuables-count" class="ml-1.5 px-2 py-0.5 rounded-full bg-black/30 text-xs font-mono">0</span>
+                        </button>
 
-                    <!-- Yu-Gi-Oh Locals -->
-                    <div class="bg-brand-card p-5 rounded-xl border border-brand-border/60 hover:border-brand-cyan/60 transition-all">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-xs font-bold text-cyan-400 font-tech uppercase">Yu-Gi-Oh! Sunday Locals</span>
-                            <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300">Sun 2:00 PM</span>
-                        </div>
-                        <h4 class="font-bold text-white mb-1">Advanced Format Local Swiss</h4>
-                        <p class="text-xs text-slate-400 mb-4">$10 Entry • OTS Packs for all participants</p>
-                        <div class="flex justify-between items-center text-xs text-slate-300 border-t border-slate-800 pt-3">
-                            <span>Format: Advanced</span>
-                            <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-users text-xs mr-1"></i> 20 Seats Open</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PC Services Breakdown Section -->
-    <section id="pc-services" class="py-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-                <div>
-                    <span class="text-brand-cyan font-tech text-xs tracking-widest uppercase font-bold">Benchmarking & Repair Hub</span>
-                    <h2 class="text-3xl sm:text-4xl font-tech font-extrabold text-white mt-1">COMPUTER & HARDWARE SERVICES</h2>
-                </div>
-                <p class="text-slate-400 max-w-md mt-2 md:mt-0 text-sm">
-                    In-house certified technicians. Thermal optimizations, diagnostic stress testing, custom loop routing, and hardware upgrades.
-                </p>
-            </div>
-
-            <!-- Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1 -->
-                <div class="bg-brand-card rounded-2xl p-6 border border-brand-border hover:border-brand-cyan/60 transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan text-xl mb-5">
-                        <i class="fa-solid fa-stethoscope"></i>
-                    </div>
-                    <span class="text-xs text-brand-cyan font-tech uppercase font-bold">Step 1</span>
-                    <h3 class="text-xl font-bold text-white mt-1 mb-2">Hardware Diagnostics</h3>
-                    <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                        Complete diagnostic testing for blue screens, power failures, memory errors, and thermal throttling issues.
-                    </p>
-                    <div class="border-t border-brand-border/60 pt-4 flex items-center justify-between">
-                        <span class="text-xs text-slate-400">Typical Fee:</span>
-                        <span class="text-sm font-tech font-bold text-white">$29 - $49 <span class="text-[10px] text-slate-400 font-normal">(Waived w/ repair)</span></span>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-brand-card rounded-2xl p-6 border border-brand-border hover:border-brand-cyan/60 transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan text-xl mb-5">
-                        <i class="fa-solid fa-wrench"></i>
-                    </div>
-                    <span class="text-xs text-brand-cyan font-tech uppercase font-bold">Repair & Maintenance</span>
-                    <h3 class="text-xl font-bold text-white mt-1 mb-2">Thermal & Component Repair</h3>
-                    <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                        Thermal repasting (CPU/GPU), liquid cooler replacement, motherboard swaps, PSU replacement, and virus cleanup.
-                    </p>
-                    <div class="border-t border-brand-border/60 pt-4 flex items-center justify-between">
-                        <span class="text-xs text-slate-400">Labor Estimate:</span>
-                        <span class="text-sm font-tech font-bold text-white">$65 - $120</span>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-brand-card rounded-2xl p-6 border border-brand-border hover:border-brand-cyan/60 transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan text-xl mb-5">
-                        <i class="fa-solid fa-desktop"></i>
-                    </div>
-                    <span class="text-xs text-brand-cyan font-tech uppercase font-bold">Custom Assembly</span>
-                    <h3 class="text-xl font-bold text-white mt-1 mb-2">Custom Rig Building</h3>
-                    <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                        Bring your own parts or let us source them. Pro cable management, BIOS updates, XMP/EXPO setup, and OS install.
-                    </p>
-                    <div class="border-t border-brand-border/60 pt-4 flex items-center justify-between">
-                        <span class="text-xs text-slate-400">Assembly Fee:</span>
-                        <span class="text-sm font-tech font-bold text-brand-cyan">$99 Flat Rate</span>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="bg-brand-card rounded-2xl p-6 border border-brand-border hover:border-brand-cyan/60 transition-all duration-300 hover:-translate-y-1">
-                    <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan text-xl mb-5">
-                        <i class="fa-solid fa-gauge-high"></i>
-                    </div>
-                    <span class="text-xs text-brand-cyan font-tech uppercase font-bold">Optimization</span>
-                    <h3 class="text-xl font-bold text-white mt-1 mb-2">Benchmarking & Tuning</h3>
-                    <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                        GPU undervolting, custom fan curves, RAM stability testing, and stress-testing benchmarks for max FPS.
-                    </p>
-                    <div class="border-t border-brand-border/60 pt-4 flex items-center justify-between">
-                        <span class="text-xs text-slate-400">Tuning Fee:</span>
-                        <span class="text-sm font-tech font-bold text-white">$50 - $85</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Custom PC Build Estimator Section -->
-    <section id="pc-builder" class="py-20 bg-brand-card/30 border-t border-b border-brand-border relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-brand-cyan font-tech text-xs tracking-widest uppercase font-bold">Instant Quote Tool</span>
-                <h2 class="text-3xl sm:text-4xl font-tech font-black text-white mt-1">CUSTOM PC BUILD ESTIMATOR</h2>
-                <p class="text-slate-400 text-sm mt-2">
-                    Select your budget and targeted performance tier to get an immediate component recommendation and total build estimate.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                <!-- Controls Column -->
-                <div class="lg:col-span-7 bg-brand-card rounded-2xl p-6 border border-brand-border space-y-6">
-                    <!-- Target Budget Slider -->
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <label class="font-tech text-xs uppercase font-bold text-slate-300">Target Budget Range</label>
-                            <span id="budget-val" class="font-tech text-lg font-bold text-brand-cyan">$1,500</span>
-                        </div>
-                        <input type="range" id="budget-slider" min="800" max="4000" step="100" value="1500" 
-                            class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-cyan"
-                            oninput="updateBuildEstimate()">
-                        <div class="flex justify-between text-[11px] text-slate-500 mt-1 font-tech">
-                            <span>$800 (1080p Entry)</span>
-                            <span>$2,200 (1440p High FPS)</span>
-                            <span>$4,000+ (4K Ultra / Workstation)</span>
-                        </div>
-                    </div>
-
-                    <!-- Primary Workload / Gaming Tier -->
-                    <div>
-                        <label class="block font-tech text-xs uppercase font-bold text-slate-300 mb-2">Primary Resolution / Purpose</label>
-                        <div class="grid grid-cols-3 gap-3">
-                            <button onclick="setResolution('1080p')" id="res-1080p" class="res-btn py-3 px-2 rounded-xl border border-brand-border bg-brand-dark text-xs font-tech font-bold uppercase text-slate-300 hover:border-brand-cyan transition-all">
-                                1080p High FPS
-                            </button>
-                            <button onclick="setResolution('1440p')" id="res-1440p" class="res-btn active py-3 px-2 rounded-xl border border-brand-cyan bg-brand-cyan/20 text-xs font-tech font-bold uppercase text-brand-cyan transition-all">
-                                1440p Ultra
-                            </button>
-                            <button onclick="setResolution('4k')" id="res-4k" class="res-btn py-3 px-2 rounded-xl border border-brand-border bg-brand-dark text-xs font-tech font-bold uppercase text-slate-300 hover:border-brand-cyan transition-all">
-                                4K / Content Workstation
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- CPU Preference -->
-                    <div>
-                        <label class="block font-tech text-xs uppercase font-bold text-slate-300 mb-2">CPU Architecture Preference</label>
-                        <div class="grid grid-cols-2 gap-3">
-                            <button onclick="setCpu('amd')" id="cpu-amd" class="cpu-btn active py-3 px-4 rounded-xl border border-red-500/80 bg-red-950/30 text-xs font-tech font-bold text-red-400 flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-microchip"></i> AMD Ryzen (Gaming King)
-                            </button>
-                            <button onclick="setCpu('intel')" id="cpu-intel" class="cpu-btn py-3 px-4 rounded-xl border border-brand-border bg-brand-dark text-xs font-tech font-bold text-slate-300 hover:border-blue-500 flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-microchip"></i> Intel Core (Multitasking)
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Additional Extras -->
-                    <div>
-                        <label class="block font-tech text-xs uppercase font-bold text-slate-300 mb-2">Build Extras & Cosmetics</label>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <label class="flex items-center space-x-3 bg-brand-dark p-3 rounded-xl border border-brand-border cursor-pointer hover:border-slate-600">
-                                <input type="checkbox" id="extra-rgb" onchange="updateBuildEstimate()" class="rounded border-slate-700 text-brand-cyan focus:ring-brand-cyan">
-                                <span class="text-xs text-slate-300">ARGB Lighting & Custom Sleeve Cables</span>
-                            </label>
-                            <label class="flex items-center space-x-3 bg-brand-dark p-3 rounded-xl border border-brand-border cursor-pointer hover:border-slate-600">
-                                <input type="checkbox" id="extra-wifi" onchange="updateBuildEstimate()" class="rounded border-slate-700 text-brand-cyan focus:ring-brand-cyan">
-                                <span class="text-xs text-slate-300">Wi-Fi 6E + Bluetooth Onboard</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Live Quote Breakdown Column -->
-                <div class="lg:col-span-5 bg-gradient-to-b from-brand-card to-brand-dark rounded-2xl p-6 border border-brand-cyan/40 glow-cyan relative">
-                    <div class="flex items-center justify-between pb-4 border-b border-brand-border">
-                        <h3 class="font-tech text-base font-bold text-white uppercase flex items-center gap-2">
-                            <i class="fa-solid fa-receipt text-brand-cyan"></i> Estimated Specs
-                        </h3>
-                        <span class="text-xs px-2 py-1 bg-brand-cyan/20 text-brand-cyan rounded font-tech">Live Estimate</span>
-                    </div>
-
-                    <!-- Breakdown List -->
-                    <div class="py-4 space-y-3 text-xs">
-                        <div class="flex justify-between items-center bg-brand-dark/60 p-2.5 rounded-lg">
-                            <span class="text-slate-400 font-semibold">Processor (CPU):</span>
-                            <span id="spec-cpu" class="text-white font-medium text-right">AMD Ryzen 7 7800X3D</span>
-                        </div>
-                        <div class="flex justify-between items-center bg-brand-dark/60 p-2.5 rounded-lg">
-                            <span class="text-slate-400 font-semibold">Graphics Card (GPU):</span>
-                            <span id="spec-gpu" class="text-brand-cyan font-semibold text-right">NVIDIA RTX 4070 Super 12GB</span>
-                        </div>
-                        <div class="flex justify-between items-center bg-brand-dark/60 p-2.5 rounded-lg">
-                            <span class="text-slate-400 font-semibold">Memory (RAM):</span>
-                            <span id="spec-ram" class="text-white font-medium text-right">32GB DDR5 6000MHz CL30</span>
-                        </div>
-                        <div class="flex justify-between items-center bg-brand-dark/60 p-2.5 rounded-lg">
-                            <span class="text-slate-400 font-semibold">Storage (NVMe SSD):</span>
-                            <span id="spec-ssd" class="text-white font-medium text-right">1TB Gen4 PCIe NVMe</span>
-                        </div>
-                        <div class="flex justify-between items-center bg-brand-dark/60 p-2.5 rounded-lg">
-                            <span class="text-slate-400 font-semibold">Power Supply (PSU):</span>
-                            <span id="spec-psu" class="text-white font-medium text-right">750W 80+ Gold Modular</span>
-                        </div>
-                    </div>
-
-                    <!-- Pricing Summary -->
-                    <div class="border-t border-brand-border pt-4 space-y-2 text-xs">
-                        <div class="flex justify-between text-slate-400">
-                            <span>Estimated Parts Hardware Total:</span>
-                            <span id="parts-cost" class="text-white">$1,399.00</span>
-                        </div>
-                        <div class="flex justify-between text-slate-400">
-                            <span>Assembly, OS & Cable Management:</span>
-                            <span class="text-brand-cyan">$99.00</span>
-                        </div>
-                        <div class="flex justify-between items-center pt-2 text-sm font-bold border-t border-brand-border/60">
-                            <span class="font-tech text-white uppercase">Estimated Total:</span>
-                            <span id="total-cost" class="font-tech text-xl text-brand-cyan">$1,498.00</span>
-                        </div>
-                    </div>
-
-                    <!-- Action Button -->
-                    <button onclick="requestQuote()" class="mt-6 w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-cyan to-blue-600 text-slate-950 font-tech font-bold text-xs uppercase tracking-wider hover:opacity-95 transition-all">
-                        Request This Build Quote
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trade-In & Buylist Calculator Section -->
-    <section id="trade-in" class="py-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-r from-brand-card via-brand-dark to-brand-card border border-brand-gold/40 rounded-3xl p-6 sm:p-10 relative overflow-hidden">
-                <div class="absolute -right-10 -bottom-10 w-80 h-80 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <!-- Text Info -->
-                    <div class="lg:col-span-5 space-y-4">
-                        <span class="px-3 py-1 rounded-full bg-brand-gold/20 text-brand-gold text-xs font-tech font-bold uppercase">
-                            Instant Cash or Credit
-                        </span>
-                        <h2 class="text-3xl sm:text-4xl font-tech font-black text-white">TRADE-IN & BUYLIST CALCULATOR</h2>
-                        <p class="text-slate-300 text-sm leading-relaxed">
-                            Got rare MTG cards, Pokémon slabs, Yu-Gi-Oh singles, or upgraded PC components (GPUs, CPUs, RAM)? We offer cash or a <strong class="text-brand-gold">20% Store Credit Bonus</strong>!
-                        </p>
-                        <div class="p-4 bg-brand-dark/80 rounded-xl border border-brand-border text-xs text-slate-300 space-y-2">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-check text-emerald-400"></i> Cards graded using NM, LP, MP guidelines.
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-check text-emerald-400"></i> PC parts benchmarked in-store before cash payout.
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Calculator Tool Box -->
-                    <div class="lg:col-span-7 bg-brand-dark p-6 rounded-2xl border border-brand-border space-y-5">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <!-- Category Select -->
-                            <div>
-                                <label class="block font-tech text-xs font-bold text-slate-300 uppercase mb-2">Item Category</label>
-                                <select id="trade-category" onchange="calculateTradeIn()" class="w-full bg-brand-card border border-brand-border rounded-xl p-3 text-xs text-white focus:border-brand-gold outline-none">
-                                    <option value="card-raw">TCG Singles (NM - Near Mint Raw)</option>
-                                    <option value="card-graded">Graded Cards (PSA / BGS / CGC Slabs)</option>
-                                    <option value="pc-gpu">Computer GPU / Graphics Card</option>
-                                    <option value="pc-cpu">Computer CPU / Processor</option>
-                                    <option value="pc-other">Other Hardware (RAM, SSD, PSU)</option>
-                                </select>
-                            </div>
-
-                            <!-- Estimated Market Value Input -->
-                            <div>
-                                <label class="block font-tech text-xs font-bold text-slate-300 uppercase mb-2">Est. Market Value ($)</label>
-                                <input type="number" id="market-value" value="100" min="5" max="5000" oninput="calculateTradeIn()"
-                                    class="w-full bg-brand-card border border-brand-border rounded-xl p-3 text-xs text-white focus:border-brand-gold outline-none">
-                            </div>
-                        </div>
-
-                        <!-- Cash vs Credit Calculation Display -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                            <!-- Cash Payout -->
-                            <div class="bg-brand-card p-4 rounded-xl border border-slate-800 text-center">
-                                <span class="text-xs text-slate-400 font-tech uppercase block mb-1">Cash Offer</span>
-                                <span id="cash-offer" class="text-2xl font-tech font-bold text-white">$65.00</span>
-                                <span class="text-[10px] text-slate-500 block mt-1">Direct Bank / Cash payout</span>
-                            </div>
-
-                            <!-- Store Credit Payout -->
-                            <div class="bg-brand-card p-4 rounded-xl border border-brand-gold/40 text-center relative overflow-hidden">
-                                <div class="absolute top-0 right-0 bg-brand-gold text-slate-950 font-tech font-bold text-[9px] px-2 py-0.5 rounded-bl">
-                                    +20% BONUS
-                                </div>
-                                <span class="text-xs text-brand-gold font-tech uppercase block mb-1">Store Credit</span>
-                                <span id="credit-offer" class="text-2xl font-tech font-bold text-brand-gold">$78.00</span>
-                                <span class="text-[10px] text-slate-400 block mt-1">Valid for all Cards & PC Services</span>
-                            </div>
-                        </div>
-
-                        <button onclick="openModal('buylist-modal')" class="w-full py-3 bg-brand-gold hover:bg-yellow-500 text-slate-950 font-tech font-bold text-xs uppercase rounded-xl transition-all">
-                            Submit Buylist / Trade-In Request
+                        <button onclick="switchTab('whole')" id="tab-whole" 
+                                class="px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-brand-surface border border-brand-border text-slate-400 hover:text-white">
+                            <i class="fa-solid fa-layer-group text-brand-cyan"></i>
+                            <span>Whole Collection</span>
+                            <span id="badge-whole-count" class="ml-1.5 px-2 py-0.5 rounded-full bg-brand-card text-xs font-mono">0</span>
                         </button>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Testimonials Section -->
-    <section class="py-20 bg-brand-card/20 border-t border-brand-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-brand-purple font-tech text-xs tracking-widest uppercase font-bold">Community Loved</span>
-                <h2 class="text-3xl font-tech font-bold text-white mt-1">WHAT THE BROTHERHOOD SAYS</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Review 1 -->
-                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border">
-                    <div class="flex text-amber-400 text-xs mb-3 space-x-1">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <!-- Collection Upload & Status Bar -->
+                <div class="p-4 rounded-xl bg-brand-surface border border-brand-border flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="text-xs text-slate-300 flex items-center space-x-2">
+                        <i class="fa-solid fa-circle-info text-brand-cyan"></i>
+                        <span id="activeTabDescription">Viewing Valuables Collection (Pre-loaded with high-value foils & rare singles).</span>
                     </div>
-                    <p class="text-slate-300 text-xs leading-relaxed italic mb-4">
-                        "Built my dream RTX 4080 Super PC with them. The cable routing was art! Plus while waiting, I traded in some old MTG Commander bulk and got enough store credit for a Charizard slab."
-                    </p>
-                    <div class="flex items-center gap-3 border-t border-slate-800 pt-3">
-                        <div class="w-8 h-8 rounded-full bg-brand-purple/20 text-brand-purple flex items-center justify-center font-bold text-xs">
-                            JD
+
+                    <!-- File Uploader for standard/ManaBox CSVs -->
+                    <div class="flex items-center space-x-3 w-full sm:w-auto">
+                        <label class="cursor-pointer w-full sm:w-auto px-4 py-2 rounded-lg bg-brand-card border border-brand-border text-xs font-semibold text-slate-200 hover:border-brand-purple hover:text-brand-purple transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-file-csv text-brand-purple"></i>
+                            <span id="uploadButtonText">Upload `valubles.csv` File</span>
+                            <input type="file" id="csvFileInput" accept=".csv, .txt, .json" class="hidden" onchange="handleCsvUpload(event)">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Status alert banner for CSV Upload results -->
+                <div id="uploadAlert" class="hidden p-4 rounded-xl text-xs font-medium border"></div>
+
+                <!-- Controls & Filters Bar -->
+                <div class="p-5 rounded-2xl bg-brand-card border border-brand-border space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <!-- Search Box -->
+                        <div class="md:col-span-2 relative">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                            <input type="text" id="searchInput" placeholder="Search card name, set, or code..." 
+                                   onkeyup="applyFilters()" 
+                                   class="w-full bg-brand-dark border border-brand-border rounded-xl pl-9 pr-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-brand-cyan transition-colors">
                         </div>
+
+                        <!-- Rarity Filter -->
                         <div>
-                            <p class="text-xs font-bold text-white">Jason D.</p>
-                            <p class="text-[10px] text-slate-400">Custom PC & TCG Player</p>
+                            <select id="rarityFilter" onchange="applyFilters()" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-brand-cyan">
+                                <option value="all">All Rarities</option>
+                                <option value="mythic">Mythic</option>
+                                <option value="rare">Rare</option>
+                                <option value="uncommon">Uncommon</option>
+                                <option value="common">Common</option>
+                            </select>
+                        </div>
+
+                        <!-- Sort Option -->
+                        <div>
+                            <select id="sortOption" onchange="applyFilters()" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-brand-cyan">
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="name-asc">Name: A to Z</option>
+                                <option value="qty-desc">Quantity: High to Low</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Quick Filter Pills -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-brand-border/60 text-xs">
+                        <div class="flex flex-wrap gap-2 items-center">
+                            <span class="text-slate-400 text-[11px] font-semibold uppercase mr-1">Foil:</span>
+                            <button onclick="setFoilFilter('all')" id="foil-all" class="foil-btn px-2.5 py-1 rounded-md bg-brand-purple text-white font-medium">All</button>
+                            <button onclick="setFoilFilter('foil')" id="foil-yes" class="foil-btn px-2.5 py-1 rounded-md bg-brand-dark text-slate-400 hover:text-white border border-brand-border">Foil Only</button>
+                            <button onclick="setFoilFilter('normal')" id="foil-no" class="foil-btn px-2.5 py-1 rounded-md bg-brand-dark text-slate-400 hover:text-white border border-brand-border">Normal Only</button>
+                        </div>
+
+                        <div class="text-slate-400 text-[11px]">
+                            Showing <span id="showingCount" class="font-bold text-white">0</span> matching cards
                         </div>
                     </div>
                 </div>
 
-                <!-- Review 2 -->
-                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border">
-                    <div class="flex text-amber-400 text-xs mb-3 space-x-1">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <!-- Main Inventory Table -->
+                <div class="overflow-x-auto rounded-2xl border border-brand-border bg-brand-card/80 shadow-2xl">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-brand-border bg-brand-surface/90 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                                <th class="p-4">Card Name</th>
+                                <th class="p-4">Set Name</th>
+                                <th class="p-4">Rarity</th>
+                                <th class="p-4">Finish</th>
+                                <th class="p-4">Condition</th>
+                                <th class="p-4">Price</th>
+                                <th class="p-4 text-center">Qty</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventoryTableBody" class="divide-y divide-brand-border/60 text-xs text-slate-200">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination Footer -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-brand-surface border border-brand-border">
+                    <div class="text-xs text-slate-400">
+                        Page <span id="currentPageNum" class="font-bold text-white">1</span> of <span id="totalPagesNum" class="font-bold text-white">1</span>
                     </div>
-                    <p class="text-slate-300 text-xs leading-relaxed italic mb-4">
-                        "My gaming PC was overheating and turning off. They diagnosed a failed liquid cooler pump within 2 hours, replaced it, repasted it, and had me back gaming the next morning!"
-                    </p>
-                    <div class="flex items-center gap-3 border-t border-slate-800 pt-3">
-                        <div class="w-8 h-8 rounded-full bg-brand-cyan/20 text-brand-cyan flex items-center justify-center font-bold text-xs">
-                            MK
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-white">Marcus K.</p>
-                            <p class="text-[10px] text-slate-400">PC Repair Client</p>
-                        </div>
+
+                    <div class="flex items-center space-x-2">
+                        <button onclick="changePage(-1)" id="prevPageBtn" class="px-3.5 py-1.5 rounded-lg bg-brand-card border border-brand-border text-xs font-semibold text-slate-300 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
+                            <i class="fa-solid fa-chevron-left mr-1"></i> Previous
+                        </button>
+                        <button onclick="changePage(1)" id="nextPageBtn" class="px-3.5 py-1.5 rounded-lg bg-brand-card border border-brand-border text-xs font-semibold text-slate-300 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
+                            Next <i class="fa-solid fa-chevron-right ml-1"></i>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Review 3 -->
-                <div class="bg-brand-card p-6 rounded-2xl border border-brand-border">
-                    <div class="flex text-amber-400 text-xs mb-3 space-x-1">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+        </section>
+
+        <!-- Event Schedule Section -->
+        <section id="events" class="py-16 bg-brand-surface/40 border-t border-brand-border/60 px-4 sm:px-6">
+            <div class="max-w-4xl mx-auto text-center space-y-6">
+                <div class="w-12 h-12 rounded-2xl bg-brand-purple/10 border border-brand-purple/30 text-brand-purple mx-auto flex items-center justify-center text-xl shadow-lg">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold font-tech text-white">Event Schedule</h2>
+                    <p class="text-slate-400 text-sm mt-1">Local tournament nights, Commander tables, and PC build workshops.</p>
+                </div>
+
+                <div class="p-8 sm:p-10 rounded-2xl bg-brand-card border border-brand-border max-w-xl mx-auto space-y-4 shadow-xl">
+                    <div class="w-16 h-16 rounded-full bg-brand-dark/80 mx-auto flex items-center justify-center text-brand-cyan border border-brand-border text-2xl">
+                        <i class="fa-solid fa-hourglass-half animate-pulse"></i>
                     </div>
-                    <p class="text-slate-300 text-xs leading-relaxed italic mb-4">
-                        "Best Yu-Gi-Oh local tournament scene in town. Fair prices on booster boxes and singles are graded accurately. The brothers really know their stuff!"
+                    <h3 class="text-lg font-bold text-slate-100">Event Schedule Coming Soon!</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        We are currently organizing our recurring game night schedule (FNM, Commander Nights, and Yu-Gi-Oh! Local Tournaments). Check back soon or contact us to suggest your favorite format!
                     </p>
-                    <div class="flex items-center gap-3 border-t border-slate-800 pt-3">
-                        <div class="w-8 h-8 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center font-bold text-xs">
-                            TL
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-white">Tyler L.</p>
-                            <p class="text-[10px] text-slate-400">Regular Tournament Player</p>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact, Location & FAQ Section -->
-    <section id="contact" class="py-20 border-t border-brand-border relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-                
-                <!-- Contact & Info -->
-                <div class="lg:col-span-5 space-y-6">
-                    <div>
-                        <span class="text-brand-cyan font-tech text-xs tracking-widest uppercase font-bold">Visit The Shop</span>
-                        <h2 class="text-3xl font-tech font-extrabold text-white mt-1">LOCATION & HOURS</h2>
-                    </div>
-
-                    <div class="bg-brand-card p-6 rounded-2xl border border-brand-border space-y-4 text-xs">
-                        <div class="flex items-start gap-3">
-                            <i class="fa-solid fa-location-dot text-brand-cyan text-lg mt-0.5"></i>
-                            <div>
-                                <p class="font-bold text-white">2 Brother's Cards and Computers</p>
-                                <p class="text-slate-400">124 Main Gaming Arcade Way, Suite 102</p>
-                                <p class="text-slate-400">Carl Junction, MO 64834</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-3 border-t border-slate-800 pt-4">
-                            <i class="fa-solid fa-clock text-brand-purple text-lg mt-0.5"></i>
-                            <div class="w-full">
-                                <p class="font-bold text-white mb-1">Business Hours</p>
-                                <div class="flex justify-between text-slate-400 py-0.5">
-                                    <span>Mon - Thu:</span>
-                                    <span class="text-slate-200">11:00 AM - 8:00 PM</span>
-                                </div>
-                                <div class="flex justify-between text-slate-400 py-0.5">
-                                    <span>Friday (FNM):</span>
-                                    <span class="text-brand-purple font-semibold">11:00 AM - 11:00 PM</span>
-                                </div>
-                                <div class="flex justify-between text-slate-400 py-0.5">
-                                    <span>Sat - Sun:</span>
-                                    <span class="text-slate-200">10:00 AM - 9:00 PM</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-3 border-t border-slate-800 pt-4">
-                            <i class="fa-solid fa-phone text-brand-gold text-lg mt-0.5"></i>
-                            <div>
-                                <p class="font-bold text-white">Call or Text Store</p>
-                                <p class="text-slate-400">(417) 555-2768</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Interactive Map Card Mockup -->
-                    <div class="bg-slate-900 h-44 rounded-2xl border border-brand-border flex items-center justify-center relative overflow-hidden group cursor-pointer">
-                        <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=600&q=80')"></div>
-                        <div class="relative z-10 text-center p-4">
-                            <i class="fa-solid fa-map-pin text-brand-cyan text-2xl mb-2 animate-bounce"></i>
-                            <p class="font-tech text-xs font-bold text-white uppercase">Click for Google Maps Directions</p>
-                        </div>
-                    </div>
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 px-4 sm:px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-bold font-tech text-white">Get In Touch</h2>
+                    <p class="text-slate-400 text-sm mt-1">Stop by, send us a card query, or request a custom PC quote.</p>
                 </div>
 
-                <!-- Quick Message Form & FAQs -->
-                <div class="lg:col-span-7 space-y-8">
-                    <!-- Message Form -->
-                    <div class="bg-brand-card p-6 sm:p-8 rounded-2xl border border-brand-border">
-                        <h3 class="font-tech text-lg font-bold text-white mb-4 uppercase">Send Us A Quick Message</h3>
-                        <form onsubmit="handleContactSubmit(event)" class="space-y-4 text-xs">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-slate-400 mb-1">Your Name</label>
-                                    <input type="text" required placeholder="John Doe" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-white focus:border-brand-cyan outline-none">
-                                </div>
-                                <div>
-                                    <label class="block text-slate-400 mb-1">Email / Phone</label>
-                                    <input type="text" required placeholder="john@example.com" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-white focus:border-brand-cyan outline-none">
-                                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Quick Message Form -->
+                    <div class="p-6 rounded-2xl bg-brand-card border border-brand-border shadow-xl">
+                        <h3 class="text-lg font-bold text-white mb-4 flex items-center space-x-2">
+                            <i class="fa-solid fa-paper-plane text-brand-purple text-sm"></i>
+                            <span>Send Store Message</span>
+                        </h3>
+                        <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Your Name</label>
+                                <input type="text" required placeholder="John Doe" class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-purple">
                             </div>
                             <div>
-                                <label class="block text-slate-400 mb-1">Subject</label>
-                                <select class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-white focus:border-brand-cyan outline-none">
-                                    <option>Custom PC Build Inquiry</option>
-                                    <option>PC Diagnostic / Repair Quote</option>
-                                    <option>Card Buylist / Trade-In Question</option>
-                                    <option>Tournament / Event Registration</option>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Subject / Interest</label>
+                                <select class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-purple">
+                                    <option>Card Inquiry / Purchase</option>
+                                    <option>Custom PC Build Quote</option>
+                                    <option>PC Repair / Diagnostic</option>
+                                    <option>General Question</option>
                                 </select>
                             </div>
                             <div>
-                                <label class="block text-slate-400 mb-1">Details / Specs / Card List</label>
-                                <textarea rows="3" required placeholder="Describe what you need help with..." class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-white focus:border-brand-cyan outline-none"></textarea>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Message</label>
+                                <textarea rows="3" required placeholder="Tell us what cards or PC specs you're looking for..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-purple"></textarea>
                             </div>
-                            <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-purple to-brand-cyan text-white font-tech font-bold uppercase hover:opacity-90 transition-all">
-                                Send Message
+                            <button type="submit" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-accent text-white font-bold text-xs hover:opacity-90 transition">
+                                Send Inquiry
                             </button>
+                            <p id="formStatus" class="hidden text-[11px] text-emerald-400 text-center mt-2"></p>
                         </form>
                     </div>
 
-                    <!-- Accordion FAQs -->
-                    <div class="space-y-3">
-                        <h3 class="font-tech text-sm font-bold text-slate-300 uppercase">Frequently Asked Questions</h3>
-                        
-                        <details class="bg-brand-card rounded-xl border border-brand-border p-4 text-xs group">
-                            <summary class="font-bold text-white cursor-pointer list-none flex justify-between items-center">
-                                <span>What is the turnaround time for custom PC builds?</span>
-                                <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
-                            </summary>
-                            <p class="text-slate-400 mt-2 leading-relaxed">
-                                If parts are in stock, we assemble, stress-test, and benchmark within 24 to 48 hours. If parts need to be ordered, typical turnaround is 3 to 5 business days.
-                            </p>
-                        </details>
+                    <!-- Store Info & Hours -->
+                    <div class="space-y-6 flex flex-col justify-between">
+                        <div class="p-6 rounded-2xl bg-brand-card border border-brand-border shadow-xl space-y-4">
+                            <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                                <i class="fa-solid fa-store text-brand-cyan text-sm"></i>
+                                <span>Shop Details</span>
+                            </h3>
 
-                        <details class="bg-brand-card rounded-xl border border-brand-border p-4 text-xs group">
-                            <summary class="font-bold text-white cursor-pointer list-none flex justify-between items-center">
-                                <span>How do you condition-grade trading cards?</span>
-                                <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
-                            </summary>
-                            <p class="text-slate-400 mt-2 leading-relaxed">
-                                We adhere strictly to standard TCGplayer grading criteria (Near Mint, Lightly Played, Moderately Played, Heavily Played). Graded slabs are verified through official serial numbers.
-                            </p>
-                        </details>
+                            <div class="space-y-3 text-xs text-slate-300">
+                                <div class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-location-dot text-brand-purple mt-0.5"></i>
+                                    <div>
+                                        <strong class="text-white block">Location Area</strong>
+                                        <span>Carl Junction & Joplin Area, Missouri</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-clock text-brand-cyan mt-0.5"></i>
+                                    <div>
+                                        <strong class="text-white block">Operating Hours</strong>
+                                        <span>Local appointments & Walk-in availability</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-shield-halved text-brand-magenta mt-0.5"></i>
+                                    <div>
+                                        <strong class="text-white block">Our Promise</strong>
+                                        <span>Fair raw card valuations & transparent computer hardware pricing</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                        <details class="bg-brand-card rounded-xl border border-brand-border p-4 text-xs group">
-                            <summary class="font-bold text-white cursor-pointer list-none flex justify-between items-center">
-                                <span>Do custom PC builds come with a warranty?</span>
-                                <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
-                            </summary>
-                            <p class="text-slate-400 mt-2 leading-relaxed">
-                                Yes! All 2 Brother's custom builds include a 1-year in-store labor warranty plus individual manufacturer warranties on all hardware components.
-                            </p>
-                        </details>
+                        <!-- Card Games We Support Badges -->
+                        <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border text-center">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 block mb-3">Supported Trading Games</span>
+                            <div class="flex justify-center items-center space-x-6 text-sm font-semibold">
+                                <span class="text-purple-400"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Magic</span>
+                                <span class="text-amber-400"><i class="fa-solid fa-dragon mr-1"></i> Yu-Gi-Oh!</span>
+                                <span class="text-cyan-400"><i class="fa-solid fa-bolt mr-1"></i> Pokémon</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-brand-dark border-t border-brand-border py-8 text-xs text-slate-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>© 2026 2 Brother's Cards and Computers. All rights reserved.</p>
-            <div class="flex space-x-6 text-slate-400 text-sm">
-                <a href="#" class="hover:text-brand-cyan"><i class="fa-brands fa-discord"></i></a>
-                <a href="#" class="hover:text-brand-purple"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="hover:text-brand-cyan"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="hover:text-brand-gold"><i class="fa-brands fa-twitch"></i></a>
-            </div>
+    <footer class="border-t border-brand-border py-8 text-center text-xs text-slate-500 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>© 2026 Two Brothers Cards and Computers. All rights reserved.</p>
+            <p class="text-[10px] text-slate-600">Magic: The Gathering, Yu-Gi-Oh!, and Pokémon are registered trademarks of their respective owners.</p>
         </div>
     </footer>
 
-    <!-- Generic Modal Dialog Structure -->
-    <div id="modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <!-- Tournament Modal -->
-        <div id="tournament-modal" class="modal-content hidden bg-brand-card border border-brand-purple rounded-2xl max-w-md w-full p-6 relative">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
-            <h3 class="font-tech text-lg font-bold text-white mb-2">Tournament Registration</h3>
-            <p class="text-xs text-slate-400 mb-4">Reserve your seat for Friday Night Magic, Pokémon League, or Yu-Gi-Oh Locals.</p>
-            <form onsubmit="handleModalSubmit(event, 'Seat Reserved!')" class="space-y-3 text-xs">
-                <input type="text" placeholder="Full Name" required class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-white outline-none">
-                <input type="email" placeholder="Email Address" required class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-white outline-none">
-                <select class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-white outline-none">
-                    <option>MTG Friday Night Magic (Modern)</option>
-                    <option>Pokémon Saturday League</option>
-                    <option>Yu-Gi-Oh! Sunday Locals</option>
-                </select>
-                <button type="submit" class="w-full py-3 bg-brand-purple text-white font-tech font-bold uppercase rounded-xl">Confirm Reservation</button>
-            </form>
-        </div>
-
-        <!-- Buylist Modal -->
-        <div id="buylist-modal" class="modal-content hidden bg-brand-card border border-brand-gold rounded-2xl max-w-md w-full p-6 relative">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
-            <h3 class="font-tech text-lg font-bold text-white mb-2">Submit Buylist / Trade</h3>
-            <p class="text-xs text-slate-400 mb-4">Send your card/hardware list to our appraisal team for verification.</p>
-            <form onsubmit="handleModalSubmit(event, 'Buylist Quote Request Sent!')" class="space-y-3 text-xs">
-                <input type="text" placeholder="Your Name" required class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-white outline-none">
-                <input type="text" placeholder="Contact Phone or Email" required class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-white outline-none">
-                <textarea placeholder="List cards/hardware details (Name, Condition, Set/Model)..." rows="3" required class="w-full bg-brand-dark border border-brand-border rounded-xl p-3 text-white outline-none"></textarea>
-                <button type="submit" class="w-full py-3 bg-brand-gold text-slate-950 font-tech font-bold uppercase rounded-xl">Submit For Appraisal</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- JavaScript Application Logic -->
     <script>
-        // Sample TCG Inventory Data
-        const tcgItems = [
-            { id: 1, game: 'mtg', title: 'The One Ring - Foil', set: 'Lord of the Rings', price: '$85.00', condition: 'Near Mint', img: 'https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=400&q=80' },
-            { id: 2, game: 'pokemon', title: 'Charizard ex Special Art', set: '151 Scarlet & Violet', price: '$120.00', condition: 'PSA 10 Gem Mint', img: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80' },
-            { id: 3, game: 'yugioh', title: 'Blue-Eyes White Dragon', set: '25th Anniversary Starlight', price: '$195.00', condition: 'Near Mint Raw', img: 'https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=400&q=80' },
-            { id: 4, game: 'mtg', title: 'Commander Masters Booster', set: 'Sealed Booster Box', price: '$299.99', condition: 'Factory Sealed', img: 'https://images.unsplash.com/photo-1544652478-6653e09f18a2?auto=format&fit=crop&w=400&q=80' }
+        // Global scope function declarations & state initialization
+        let valuablesData = [
+            { name: "Ocelot Pride", set: "Modern Horizons 3", rarity: "mythic", foil: "Foil", price: 42.50, qty: 1, condition: "Near Mint" },
+            { name: "Warrior's Oath", set: "Double Masters 2022", rarity: "mythic", foil: "Foil", price: 18.00, qty: 1, condition: "Near Mint" },
+            { name: "Master of Ceremonies", set: "Streets of New Capenna", rarity: "rare", foil: "Normal", price: 12.25, qty: 2, condition: "Near Mint" },
+            { name: "Sage of Hours", set: "Journey into Nyx", rarity: "rare", foil: "Foil", price: 15.50, qty: 1, condition: "Light Play" },
+            { name: "Reckless Endeavor", set: "Commander Legends", rarity: "rare", foil: "Foil", price: 9.75, qty: 1, condition: "Near Mint" },
+            { name: "Swarmyard", set: "Time Spiral Remastered", rarity: "rare", foil: "Normal", price: 11.00, qty: 3, condition: "Near Mint" },
+            { name: "Blue-Eyes White Dragon", set: "Legend of Blue Eyes", rarity: "ultra rare", foil: "Foil", price: 150.00, qty: 1, condition: "Light Play" },
+            { name: "Charizard ex Special Art", set: "151 Scarlet & Violet", rarity: "special illustration", foil: "Foil", price: 125.00, qty: 1, condition: "Gem Mint" }
         ];
 
-        // Mobile Menu Toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
+        let wholeCollectionData = [
+            { name: "Eidolon of Countless Battles", set: "Born of the Gods", rarity: "rare", foil: "Normal", price: 2.50, qty: 2, condition: "Near Mint" },
+            { name: "Celestial Judgment", set: "Commander 2021", rarity: "rare", foil: "Normal", price: 1.10, qty: 1, condition: "Near Mint" },
+            { name: "Aetherstorm Roc", set: "Kaladesh", rarity: "rare", foil: "Foil", price: 0.85, qty: 4, condition: "Near Mint" },
+            { name: "Curse of Conformity", set: "Innistrad: Midnight Hunt", rarity: "rare", foil: "Normal", price: 0.95, qty: 2, condition: "Near Mint" },
+            { name: "Sol Ring", set: "Commander Masters", rarity: "uncommon", foil: "Normal", price: 2.20, qty: 8, condition: "Near Mint" },
+            { name: "Command Tower", set: "Wilds of Eldraine", rarity: "common", foil: "Normal", price: 0.50, qty: 12, condition: "Near Mint" },
+            { name: "Arcane Signet", set: "Phyrexia: All Will Be One", rarity: "common", foil: "Foil", price: 1.75, qty: 5, condition: "Near Mint" },
+            { name: "Lightning Bolt", set: "Core Set 2021", rarity: "uncommon", foil: "Normal", price: 1.25, qty: 6, condition: "Near Mint" },
+            { name: "Dark Ritual", set: "Strixhaven Mystical Archive", rarity: "uncommon", foil: "Foil", price: 6.50, qty: 2, condition: "Near Mint" },
+            { name: "Counterspell", set: "Modern Horizons 2", rarity: "uncommon", foil: "Normal", price: 1.50, qty: 10, condition: "Near Mint" }
+        ];
 
-        // Close mobile menu on link click
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mobile-menu').classList.add('hidden');
+        let currentTab = 'valuables';
+        let filteredItems = [];
+        let currentPage = 1;
+        const pageSize = 25;
+        let activeFoilFilter = 'all';
+
+        // Define handleCsvUpload globally before window load
+        window.handleCsvUpload = function(event) {
+            const file = event.target.files[0];
+            const alertBox = document.getElementById('uploadAlert');
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const text = e.target.result;
+                    const parsed = parseCsvContent(text);
+
+                    if (parsed.length === 0) {
+                        throw new Error("No valid rows found in CSV file.");
+                    }
+
+                    if (currentTab === 'valuables') {
+                        valuablesData = parsed;
+                    } else {
+                        wholeCollectionData = parsed;
+                    }
+
+                    updateBadgeCounts();
+                    applyFilters();
+
+                    alertBox.className = "p-4 rounded-xl text-xs font-medium bg-emerald-900/30 text-emerald-300 border border-emerald-700/50 block";
+                    alertBox.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i> Successfully imported <strong>${parsed.length}</strong> cards into the <strong>${currentTab === 'valuables' ? 'Valuables' : 'Whole Collection'}</strong> tab!`;
+                } catch (err) {
+                    alertBox.className = "p-4 rounded-xl text-xs font-medium bg-rose-900/30 text-rose-300 border border-rose-700/50 block";
+                    alertBox.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i> Could not read file: ${err.message}. Please upload standard ManaBox CSV files.`;
+                }
+            };
+            reader.readAsText(file);
+        };
+
+        window.toggleMobileMenu = function() {
+            const menu = document.getElementById('mobileMenu');
+            if (menu) menu.classList.toggle('hidden');
+        };
+
+        window.switchTab = function(tab) {
+            currentTab = tab;
+            currentPage = 1;
+
+            const tabValuables = document.getElementById('tab-valuables');
+            const tabWhole = document.getElementById('tab-whole');
+            const desc = document.getElementById('activeTabDescription');
+            const uploadBtnText = document.getElementById('uploadButtonText');
+
+            if (tab === 'valuables') {
+                if (tabValuables) tabValuables.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-gradient-to-r from-brand-purple to-purple-600 text-white shadow-lg glow-purple";
+                if (tabWhole) tabWhole.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-brand-surface border border-brand-border text-slate-400 hover:text-white";
+                if (desc) desc.innerText = "Viewing Valuables Collection (Pre-loaded with high-value foils & rare singles).";
+                if (uploadBtnText) uploadBtnText.innerText = "Upload `valubles.csv` File";
+            } else {
+                if (tabWhole) tabWhole.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-gradient-to-r from-brand-cyan to-blue-600 text-white shadow-lg glow-cyan";
+                if (tabValuables) tabValuables.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-brand-surface border border-brand-border text-slate-400 hover:text-white";
+                if (desc) desc.innerText = "Viewing Whole Collection (All stock singles, commons, uncommons, & rares).";
+                if (uploadBtnText) uploadBtnText.innerText = "Upload `Whole collection v4.csv` File";
+            }
+
+            applyFilters();
+        };
+
+        window.applyFilters = function() {
+            const rawData = currentTab === 'valuables' ? valuablesData : wholeCollectionData;
+            const searchInput = document.getElementById('searchInput');
+            const rarityFilter = document.getElementById('rarityFilter');
+            const sortOption = document.getElementById('sortOption');
+
+            const search = searchInput ? searchInput.value.toLowerCase() : '';
+            const rarity = rarityFilter ? rarityFilter.value : 'all';
+            const sort = sortOption ? sortOption.value : 'price-desc';
+
+            filteredItems = rawData.filter(item => {
+                const matchSearch = item.name.toLowerCase().includes(search) || 
+                                    item.set.toLowerCase().includes(search);
+                
+                const matchRarity = rarity === 'all' || item.rarity.toLowerCase().includes(rarity);
+
+                let matchFoil = true;
+                if (activeFoilFilter === 'foil') {
+                    matchFoil = item.foil && item.foil.toLowerCase().includes('foil');
+                } else if (activeFoilFilter === 'normal') {
+                    matchFoil = !item.foil || item.foil.toLowerCase().includes('normal') || item.foil === '';
+                }
+
+                return matchSearch && matchRarity && matchFoil;
             });
-        });
 
-        // Render TCG Items
-        function renderTCG(filter = 'all') {
-            const grid = document.getElementById('tcg-grid');
-            grid.innerHTML = '';
-
-            const filtered = filter === 'all' ? tcgItems : tcgItems.filter(item => item.game === filter);
-
-            filtered.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'bg-brand-card border border-brand-border rounded-2xl overflow-hidden hover:border-brand-purple/60 transition-all duration-300 group';
-                card.innerHTML = `
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <span class="absolute top-3 right-3 bg-brand-dark/90 border border-brand-border text-[10px] font-tech font-bold px-2 py-1 rounded text-brand-gold uppercase">
-                            ${item.condition}
-                        </span>
-                    </div>
-                    <div class="p-5">
-                        <span class="text-[10px] text-slate-400 font-tech uppercase block mb-1">${item.set}</span>
-                        <h4 class="font-bold text-white text-base mb-2 group-hover:text-brand-purple transition-colors">${item.title}</h4>
-                        <div class="flex justify-between items-center border-t border-slate-800 pt-3">
-                            <span class="font-tech text-lg font-bold text-white">${item.price}</span>
-                            <button onclick="alert('Item added to inquiry list!')" class="px-3 py-1.5 rounded-lg bg-brand-purple/20 border border-brand-purple/40 text-brand-purple text-xs font-tech font-bold hover:bg-brand-purple hover:text-white transition-all">
-                                Inquire
-                            </button>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(card);
+            filteredItems.sort((a, b) => {
+                if (sort === 'price-desc') return b.price - a.price;
+                if (sort === 'price-asc') return a.price - b.price;
+                if (sort === 'name-asc') return a.name.localeCompare(b.name);
+                if (sort === 'qty-desc') return b.qty - a.qty;
+                return 0;
             });
-        }
 
-        // TCG Filter Buttons
-        function filterTCG(game) {
-            document.querySelectorAll('.tcg-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-brand-purple', 'text-white');
-                btn.classList.add('bg-brand-dark', 'text-slate-300');
-            });
-            event.currentTarget.classList.add('active', 'bg-brand-purple', 'text-white');
-            event.currentTarget.classList.remove('bg-brand-dark', 'text-slate-300');
-            renderTCG(game);
-        }
+            const showingCount = document.getElementById('showingCount');
+            if (showingCount) showingCount.innerText = filteredItems.length;
+            renderTable();
+        };
 
-        // Custom PC Build Estimator State
-        let currentRes = '1440p';
-        let currentCpu = 'amd';
-
-        function setResolution(res) {
-            currentRes = res;
-            document.querySelectorAll('.res-btn').forEach(btn => {
-                btn.classList.remove('active', 'border-brand-cyan', 'bg-brand-cyan/20', 'text-brand-cyan');
-                btn.classList.add('border-brand-border', 'bg-brand-dark', 'text-slate-300');
-            });
-            document.getElementById(`res-${res}`).classList.add('active', 'border-brand-cyan', 'bg-brand-cyan/20', 'text-brand-cyan');
-            updateBuildEstimate();
-        }
-
-        function setCpu(brand) {
-            currentCpu = brand;
-            document.querySelectorAll('.cpu-btn').forEach(btn => {
-                btn.classList.remove('active', 'border-red-500/80', 'bg-red-950/30', 'text-red-400', 'border-blue-500', 'bg-blue-950/30', 'text-blue-400');
-                btn.classList.add('border-brand-border', 'bg-brand-dark', 'text-slate-300');
+        window.setFoilFilter = function(type) {
+            activeFoilFilter = type;
+            document.querySelectorAll('.foil-btn').forEach(btn => {
+                btn.className = "foil-btn px-2.5 py-1 rounded-md bg-brand-dark text-slate-400 hover:text-white border border-brand-border";
             });
             
-            const selectedBtn = document.getElementById(`cpu-${brand}`);
-            if (brand === 'amd') {
-                selectedBtn.classList.add('active', 'border-red-500/80', 'bg-red-950/30', 'text-red-400');
-            } else {
-                selectedBtn.classList.add('active', 'border-blue-500', 'bg-blue-950/30', 'text-blue-400');
-            }
-            updateBuildEstimate();
-        }
+            const activeId = type === 'all' ? 'foil-all' : type === 'foil' ? 'foil-yes' : 'foil-no';
+            const activeBtn = document.getElementById(activeId);
+            if (activeBtn) activeBtn.className = "foil-btn px-2.5 py-1 rounded-md bg-brand-purple text-white font-medium";
 
-        function updateBuildEstimate() {
-            const budget = parseInt(document.getElementById('budget-slider').value);
-            document.getElementById('budget-val').innerText = `$${budget.toLocaleString()}`;
-
-            let cpuText = currentCpu === 'amd' ? 'AMD Ryzen 5 7600X' : 'Intel Core i5-13600K';
-            let gpuText = 'NVIDIA RTX 4060 8GB';
-            let ramText = '16GB DDR5 5600MHz';
-            let ssdText = '1TB NVMe SSD';
-            let psuText = '650W 80+ Gold';
-
-            if (budget > 1200 && budget <= 2000) {
-                cpuText = currentCpu === 'amd' ? 'AMD Ryzen 7 7800X3D' : 'Intel Core i7-14700K';
-                gpuText = 'NVIDIA RTX 4070 Super 12GB';
-                ramText = '32GB DDR5 6000MHz CL30';
-                ssdText = '1TB Gen4 PCIe NVMe';
-                psuText = '750W 80+ Gold Modular';
-            } else if (budget > 2000) {
-                cpuText = currentCpu === 'amd' ? 'AMD Ryzen 9 7950X3D' : 'Intel Core i9-14900K';
-                gpuText = 'NVIDIA RTX 4080 Super / RTX 4090';
-                ramText = '64GB DDR5 6000MHz';
-                ssdText = '2TB Gen4 High-Speed NVMe';
-                psuText = '1000W 80+ Platinum ATX3.0';
-            }
-
-            document.getElementById('spec-cpu').innerText = cpuText;
-            document.getElementById('spec-gpu').innerText = gpuText;
-            document.getElementById('spec-ram').innerText = ramText;
-            document.getElementById('spec-ssd').innerText = ssdText;
-            document.getElementById('spec-psu').innerText = psuText;
-
-            const partsCost = Math.round(budget * 0.9);
-            const totalCost = partsCost + 99;
-
-            document.getElementById('parts-cost').innerText = `$${partsCost.toLocaleString()}.00`;
-            document.getElementById('total-cost').innerText = `$${totalCost.toLocaleString()}.00`;
-        }
-
-        // Trade-in Calculator
-        function calculateTradeIn() {
-            const marketVal = parseFloat(document.getElementById('market-value').value) || 0;
-            const category = document.getElementById('trade-category').value;
-
-            let cashRate = 0.65; // Default 65% cash rate
-            if (category === 'card-graded') cashRate = 0.72;
-            if (category === 'pc-gpu') cashRate = 0.70;
-
-            const cashOffer = marketVal * cashRate;
-            const creditOffer = cashOffer * 1.20; // 20% bonus
-
-            document.getElementById('cash-offer').innerText = `$${cashOffer.toFixed(2)}`;
-            document.getElementById('credit-offer').innerText = `$${creditOffer.toFixed(2)}`;
-        }
-
-        // Modal Logic
-        function openModal(modalId) {
-            document.getElementById('modal-backdrop').classList.remove('hidden');
-            document.querySelectorAll('.modal-content').forEach(m => m.classList.add('hidden'));
-            document.getElementById(modalId).classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('modal-backdrop').classList.add('hidden');
-        }
-
-        function requestQuote() {
-            const specCpu = document.getElementById('spec-cpu').innerText;
-            const specGpu = document.getElementById('spec-gpu').innerText;
-            const total = document.getElementById('total-cost').innerText;
-            alert(`Quote Created!\n\nSpecs: ${specCpu} + ${specGpu}\nEstimated Total: ${total}\n\nOur builder team will prepare this quote for you.`);
-        }
-
-        function handleContactSubmit(e) {
-            e.preventDefault();
-            alert('Thank you for contacting 2 Brother\'s Cards and Computers! We will respond shortly.');
-            e.target.reset();
-        }
-
-        function handleModalSubmit(e, msg) {
-            e.preventDefault();
-            alert(msg);
-            closeModal();
-            e.target.reset();
-        }
-
-        // Initialize on Load
-        window.onload = function() {
-            renderTCG('all');
-            updateBuildEstimate();
-            calculateTradeIn();
+            applyFilters();
         };
+
+        window.renderTable = function() {
+            const tbody = document.getElementById('inventoryTableBody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            const totalPages = Math.ceil(filteredItems.length / pageSize) || 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+
+            const pageNumEl = document.getElementById('currentPageNum');
+            const totalPagesEl = document.getElementById('totalPagesNum');
+            if (pageNumEl) pageNumEl.innerText = currentPage;
+            if (totalPagesEl) totalPagesEl.innerText = totalPages;
+            
+            const prevBtn = document.getElementById('prevPageBtn');
+            const nextBtn = document.getElementById('nextPageBtn');
+            if (prevBtn) prevBtn.disabled = currentPage === 1;
+            if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
+
+            const startIndex = (currentPage - 1) * pageSize;
+            const pageItems = filteredItems.slice(startIndex, startIndex + pageSize);
+
+            if (pageItems.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="p-8 text-center text-slate-400 text-xs">
+                            No cards found matching your search or filter.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            pageItems.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-brand-surface/70 transition-colors";
+
+                let rarityClass = "text-slate-400 border-slate-700 bg-slate-800/40";
+                const r = item.rarity.toLowerCase();
+                if (r.includes('mythic')) rarityClass = "text-amber-400 border-amber-500/40 bg-amber-950/20";
+                else if (r.includes('rare')) rarityClass = "text-yellow-300 border-yellow-500/40 bg-yellow-950/20";
+                else if (r.includes('uncommon')) rarityClass = "text-slate-300 border-slate-500/40 bg-slate-800/40";
+
+                const isFoil = item.foil && item.foil.toLowerCase().includes('foil');
+                const foilBadge = isFoil 
+                    ? `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-white shadow-sm">Foil</span>`
+                    : `<span class="text-slate-500 text-[11px]">Normal</span>`;
+
+                tr.innerHTML = `
+                    <td class="p-4 font-bold text-white">${escapeHtml(item.name)}</td>
+                    <td class="p-4 text-slate-300 text-xs">${escapeHtml(item.set)}</td>
+                    <td class="p-4">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-semibold border ${rarityClass} capitalize">
+                            ${escapeHtml(item.rarity)}
+                        </span>
+                    </td>
+                    <td class="p-4">${foilBadge}</td>
+                    <td class="p-4 text-slate-400 text-xs">${escapeHtml(item.condition || 'Near Mint')}</td>
+                    <td class="p-4 font-bold text-brand-cyan">$${item.price.toFixed(2)}</td>
+                    <td class="p-4 text-center font-bold text-white">${item.qty}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        };
+
+        window.changePage = function(direction) {
+            currentPage += direction;
+            renderTable();
+        };
+
+        window.updateBadgeCounts = function() {
+            const valBadge = document.getElementById('badge-valuables-count');
+            const wholeBadge = document.getElementById('badge-whole-count');
+            if (valBadge) valBadge.innerText = valuablesData.length;
+            if (wholeBadge) wholeBadge.innerText = wholeCollectionData.length;
+        };
+
+        window.handleContactSubmit = function(event) {
+            event.preventDefault();
+            const status = document.getElementById('formStatus');
+            if (status) {
+                status.innerText = "Thank you! Your message has been sent to Two Brothers Cards and Computers.";
+                status.classList.remove('hidden');
+            }
+            event.target.reset();
+        };
+
+        function parseCsvContent(csvText) {
+            const lines = csvText.split(/\r?\n/).filter(line => line.trim() !== '');
+            if (lines.length < 2) return [];
+
+            const headerLine = lines[0];
+            const headers = parseCsvRow(headerLine).map(h => h.trim().toLowerCase());
+
+            const nameIdx = headers.findIndex(h => h.includes('name'));
+            const setIdx = headers.findIndex(h => h.includes('set'));
+            const rarityIdx = headers.findIndex(h => h.includes('rarity'));
+            const foilIdx = headers.findIndex(h => h.includes('foil') || h.includes('finish'));
+            const priceIdx = headers.findIndex(h => h.includes('price') || h.includes('value'));
+            const qtyIdx = headers.findIndex(h => h.includes('quantity') || h.includes('qty'));
+            const conditionIdx = headers.findIndex(h => h.includes('condition'));
+
+            const items = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const row = parseCsvRow(lines[i]);
+                if (!row || row.length < 2) continue;
+
+                const name = nameIdx !== -1 ? row[nameIdx] : row[0];
+                if (!name) continue;
+
+                const set = setIdx !== -1 ? row[setIdx] : (row[1] || 'Standard');
+                const rarity = rarityIdx !== -1 ? row[rarityIdx] : 'rare';
+                const foil = foilIdx !== -1 ? row[foilIdx] : 'Normal';
+                
+                let rawPrice = priceIdx !== -1 ? row[priceIdx] : '0.00';
+                rawPrice = parseFloat(String(rawPrice).replace(/[^0-9.]/g, '')) || 0.00;
+
+                let rawQty = qtyIdx !== -1 ? row[qtyIdx] : '1';
+                rawQty = parseInt(String(rawQty).replace(/[^0-9]/g, '')) || 1;
+
+                const condition = conditionIdx !== -1 ? row[conditionIdx] : 'Near Mint';
+
+                items.push({
+                    name: name,
+                    set: set || 'Unknown Set',
+                    rarity: rarity || 'rare',
+                    foil: foil || 'Normal',
+                    price: rawPrice,
+                    qty: rawQty,
+                    condition: condition
+                });
+            }
+
+            return items;
+        }
+
+        function parseCsvRow(text) {
+            const result = [];
+            let cur = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < text.length; i++) {
+                const c = text[i];
+                if (c === '"') {
+                    inQuotes = !inQuotes;
+                } else if (c === ',' && !inQuotes) {
+                    result.push(cur.trim().replace(/^"(.*)"$/, '$1'));
+                    cur = '';
+                } else {
+                    cur += c;
+                }
+            }
+            result.push(cur.trim().replace(/^"(.*)"$/, '$1'));
+            return result;
+        }
+
+        function escapeHtml(str) {
+            return String(str || '')
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateBadgeCounts();
+            switchTab('valuables');
+
+            const csvInput = document.getElementById('csvFileInput');
+            if (csvInput) {
+                csvInput.addEventListener('change', window.handleCsvUpload);
+            }
+        });
     </script>
 </body>
 </html>
