@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Two Brothers Cards and Computers</title>
+    <title>Two Brothers Cards & Computers</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons CDN -->
@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
-    
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -20,18 +20,14 @@
                 extend: {
                     colors: {
                         brand: {
-                            dark: '#0a0d14',
-                            surface: '#121826',
-                            card: '#182032',
-                            border: '#243049',
+                            dark: '#0a0d18',
+                            surface: '#121830',
+                            card: '#18203a',
+                            border: '#26305a',
                             purple: '#a855f7',
-                            cyan: '#06b6d4',
-                            magenta: '#ec4899',
-                            accent: '#3b82f6',
-                            mythic: '#f97316',
-                            rare: '#eab308',
-                            uncommon: '#94a3b8',
-                            common: '#64748b'
+                            violet: '#8b5cf6',
+                            blue: '#3b82f6',
+                            sky: '#60a5fa'
                         }
                     },
                     fontFamily: {
@@ -48,13 +44,16 @@
             background-size: 28px 28px;
         }
         .glow-purple { box-shadow: 0 0 30px -5px rgba(168, 85, 247, 0.3); }
-        .glow-cyan { box-shadow: 0 0 30px -5px rgba(6, 182, 212, 0.3); }
-        
+        .glow-blue { box-shadow: 0 0 30px -5px rgba(59, 130, 246, 0.3); }
+
         /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #0a0d14; }
-        ::-webkit-scrollbar-thumb { background: #243049; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: #0a0d18; }
+        ::-webkit-scrollbar-thumb { background: #26305a; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+
+        /* Keep anchor jumps from hiding under the sticky header */
+        section[id] { scroll-margin-top: 5rem; }
     </style>
 </head>
 <body class="bg-brand-dark text-slate-100 font-sans antialiased bg-grid-pattern min-h-screen flex flex-col selection:bg-brand-purple selection:text-white">
@@ -64,9 +63,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
             <a href="#" class="flex items-center space-x-3 group">
-                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-purple via-brand-accent to-brand-cyan p-0.5 shadow-lg group-hover:scale-105 transition-transform duration-200">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-purple via-brand-violet to-brand-blue p-0.5 shadow-lg group-hover:scale-105 transition-transform duration-200">
                     <div class="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center">
-                        <i class="fa-solid fa-layer-group text-brand-cyan group-hover:text-brand-purple transition-colors text-lg"></i>
+                        <i class="fa-solid fa-layer-group text-brand-sky group-hover:text-brand-purple transition-colors text-lg"></i>
                     </div>
                 </div>
                 <div>
@@ -76,29 +75,26 @@
             </a>
 
             <!-- Desktop Navigation Links -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="#about" class="text-slate-300 hover:text-brand-cyan transition-colors">About Us</a>
-                <a href="#services" class="text-slate-300 hover:text-brand-cyan transition-colors">Services</a>
-                <a href="#inventory" class="text-slate-300 hover:text-brand-cyan transition-colors flex items-center space-x-1">
-                    <span>Card Collections</span>
-                    <span class="text-[10px] bg-brand-purple/20 text-brand-purple px-1.5 py-0.5 rounded border border-brand-purple/30">Valuables</span>
-                </a>
-                <a href="#events" class="text-slate-300 hover:text-brand-cyan transition-colors">Events</a>
-                <a href="#contact" class="px-4 py-2 rounded-lg bg-gradient-to-r from-brand-purple to-brand-accent text-white font-medium hover:opacity-90 shadow-md transition-all">Contact Us</a>
+            <nav class="hidden md:flex items-center space-x-7 text-sm font-medium">
+                <a href="#about" class="text-slate-300 hover:text-brand-sky transition-colors">Home</a>
+                <a href="#bio" class="text-slate-300 hover:text-brand-sky transition-colors">Our Story</a>
+                <a href="#services" class="text-slate-300 hover:text-brand-sky transition-colors">Services</a>
+                <a href="#vendor-events" class="text-slate-300 hover:text-brand-sky transition-colors">Vendor Events</a>
+                <a href="#contact" class="px-4 py-2 rounded-lg bg-gradient-to-r from-brand-purple to-brand-blue text-white font-medium hover:opacity-90 shadow-md transition-all">Contact Us</a>
             </nav>
 
             <!-- Mobile menu button -->
-            <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-brand-surface">
+            <button onclick="toggleMobileMenu()" aria-label="Toggle menu" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-brand-surface">
                 <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
             </button>
         </div>
 
         <!-- Mobile Navigation Menu -->
         <div id="mobileMenu" class="hidden md:hidden border-b border-brand-border bg-brand-surface px-4 py-4 space-y-3">
-            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-brand-cyan">About Us</a>
-            <a href="#services" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-brand-cyan">Services</a>
-            <a href="#inventory" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-brand-cyan">Card Inventory</a>
-            <a href="#events" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-brand-cyan">Events</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-brand-sky">Home</a>
+            <a href="#bio" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-brand-sky">Our Story</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-brand-sky">Services</a>
+            <a href="#vendor-events" onclick="toggleMobileMenu()" class="block py-2 text-slate-300 hover:text-brand-sky">Vendor Events</a>
             <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-brand-purple font-semibold">Contact Store</a>
         </div>
     </header>
@@ -107,32 +103,90 @@
         <!-- Hero Section -->
         <section id="about" class="py-16 md:py-24 px-4 sm:px-6 relative overflow-hidden">
             <div class="max-w-4xl mx-auto text-center space-y-8 relative z-10">
-                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-xs font-medium text-brand-cyan shadow-inner">
-                    <span class="w-2 h-2 rounded-full bg-brand-cyan animate-ping"></span>
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-xs font-medium text-brand-sky shadow-inner">
+                    <span class="w-2 h-2 rounded-full bg-brand-sky animate-ping"></span>
                     <span>Local TCG & Custom PC Specialist</span>
                 </div>
 
                 <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight font-tech">
-                    Welcome to <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple via-brand-cyan to-brand-magenta">Two Brothers Cards and Computers!</span>
+                    Welcome to <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple via-brand-violet to-brand-blue">Two Brothers Cards &amp; Computers!</span>
                 </h1>
 
                 <!-- Statement Box -->
                 <div class="p-6 sm:p-8 rounded-2xl bg-brand-card/90 border border-brand-border/80 shadow-2xl backdrop-blur-md relative group">
-                    <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-purple to-brand-cyan rounded-2xl opacity-20 blur group-hover:opacity-30 transition"></div>
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-purple to-brand-blue rounded-2xl opacity-20 blur group-hover:opacity-30 transition"></div>
                     <p class="text-base sm:text-lg md:text-xl text-slate-200 leading-relaxed font-normal relative z-10">
                         "We are a small local business selling Magic, Yu-Gi-Oh!, and Pokémon cards, as well as offering pick-your-part custom computer builds, diagnostics and troubleshooting, and basic repairs."
                     </p>
                 </div>
 
                 <div class="flex flex-wrap justify-center gap-4 pt-2">
-                    <a href="#inventory" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-accent text-white font-semibold shadow-lg hover:shadow-brand-purple/25 hover:scale-[1.02] transition-all flex items-center space-x-2">
-                        <i class="fa-solid fa-gem text-brand-cyan"></i>
-                        <span>Browse Valuables & Collection</span>
+                    <a href="#vendor-events" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-blue text-white font-semibold shadow-lg hover:shadow-brand-purple/25 hover:scale-[1.02] transition-all flex items-center space-x-2">
+                        <i class="fa-solid fa-store text-brand-sky"></i>
+                        <span>Find Us at Vendor Events</span>
                     </a>
-                    <a href="#services" class="px-6 py-3.5 rounded-xl bg-brand-card border border-brand-border text-slate-200 font-semibold hover:border-brand-cyan hover:text-brand-cyan hover:scale-[1.02] transition-all flex items-center space-x-2">
+                    <a href="#services" class="px-6 py-3.5 rounded-xl bg-brand-card border border-brand-border text-slate-200 font-semibold hover:border-brand-sky hover:text-brand-sky hover:scale-[1.02] transition-all flex items-center space-x-2">
                         <i class="fa-solid fa-laptop-code text-brand-purple"></i>
                         <span>PC Build & Repair Services</span>
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bio Section -->
+        <section id="bio" class="py-16 px-4 sm:px-6 border-t border-brand-border/60">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-brand-sky">
+                        <i class="fa-solid fa-user-group"></i>
+                        <span>Meet the Shop</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-bold font-tech text-white mt-1">Our Story</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+                    <!-- Story text -->
+                    <div class="lg:col-span-3 p-8 rounded-2xl bg-brand-card border border-brand-border shadow-xl space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed">
+                        <!-- EDIT ME: replace this with your real story -->
+                        <p>
+                            Two Brothers Cards &amp; Computers started the way a lot of good things do: two brothers who
+                            couldn't stop talking about the games they love and the machines they love to build.
+                        </p>
+                        <p>
+                            One of us grew up shuffling Magic, Yu-Gi-Oh!, and Pokémon decks at the kitchen table. The
+                            other was always taking computers apart to see how they worked and putting them back together
+                            better. Eventually we figured we could do both under one roof and do it fairly.
+                        </p>
+                        <p>
+                            Today we're a small, local, family-run shop. We give honest card valuations, build custom
+                            PCs around what you actually need, and fix problems without the big-box runaround. When you
+                            deal with us, you deal with us.
+                        </p>
+                    </div>
+
+                    <!-- Brother cards -->
+                    <div class="lg:col-span-2 space-y-4">
+                        <!-- EDIT ME: adjust roles/descriptions and add photos if you like -->
+                        <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-blue/50 transition shadow-xl flex items-start space-x-4">
+                            <div class="w-16 h-16 shrink-0 rounded-full bg-gradient-to-br from-brand-blue to-brand-sky border-2 border-brand-sky flex items-center justify-center text-white text-xl">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white">Josh Engle</h3>
+                                <p class="text-xs text-brand-sky font-semibold uppercase tracking-wider mb-1">Cards & Trading</p>
+                                <p class="text-xs text-slate-400 leading-relaxed">Magic, Yu-Gi-Oh!, and Pokémon player, card buyer, and your go-to for singles and trade-ins.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-purple/50 transition shadow-xl flex items-start space-x-4">
+                            <img src="data:image/jpeg;base64,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" alt="Chris Engle" class="w-16 h-16 shrink-0 rounded-full object-cover object-center border-2 border-brand-purple shadow-lg">
+                            <div>
+                                <h3 class="font-bold text-white">Chris Engle</h3>
+                                <p class="text-xs text-brand-purple font-semibold uppercase tracking-wider mb-1">Computers & Repair</p>
+                                <p class="text-xs text-slate-400 leading-relaxed">Custom PC builder and troubleshooter. Bring a parts list or a problem and he'll sort it out.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -147,15 +201,15 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- TCG Card Sales Box -->
-                    <div class="p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-purple/50 transition-all duration-300 shadow-xl flex flex-col justify-between">
+                    <div class="p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-blue/50 transition-all duration-300 shadow-xl flex flex-col justify-between">
                         <div>
-                            <div class="w-14 h-14 rounded-2xl bg-brand-purple/10 border border-brand-purple/30 text-brand-purple flex items-center justify-center text-2xl mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-blue/10 border border-brand-blue/30 text-brand-sky flex items-center justify-center text-2xl mb-6">
                                 <svg viewBox="0 0 32 32" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true">
                                     <!-- card behind -->
-                                    <rect x="6" y="5" width="15" height="21" rx="2.5" transform="rotate(-14 13.5 15.5)" fill="#182032" opacity="0.55"/>
+                                    <rect x="6" y="5" width="15" height="21" rx="2.5" transform="rotate(-14 13.5 15.5)" fill="#18203a" opacity="0.55"/>
                                     <!-- card back (front-most) -->
                                     <g transform="rotate(10 20 16)">
-                                        <rect x="12.5" y="5" width="15" height="21" rx="2.5" fill="#182032"/>
+                                        <rect x="12.5" y="5" width="15" height="21" rx="2.5" fill="#18203a"/>
                                         <rect x="14.5" y="7" width="11" height="17" rx="1.5" stroke-width="1"/>
                                         <path d="M20 10.5 L23.2 15.5 L20 20.5 L16.8 15.5 Z" fill="currentColor" fill-opacity="0.25" stroke-width="1"/>
                                         <circle cx="20" cy="15.5" r="1" fill="currentColor" stroke="none"/>
@@ -168,33 +222,50 @@
                             </p>
                             <ul class="space-y-3 text-sm text-slate-300">
                                 <li class="flex items-center space-x-3">
-                                    <div class="w-2 h-2 rounded-full bg-brand-purple"></div>
+                                    <div class="w-2 h-2 rounded-full bg-brand-blue"></div>
                                     <span><strong>Magic: The Gathering</strong> – Commander staples, foils, mythics & singles</span>
                                 </li>
                                 <li class="flex items-center space-x-3">
-                                    <div class="w-2 h-2 rounded-full bg-amber-400"></div>
+                                    <div class="w-2 h-2 rounded-full bg-brand-sky"></div>
                                     <span><strong>Yu-Gi-Oh!</strong> – Secret Rares, structural decks, & competitive playsets</span>
                                 </li>
                                 <li class="flex items-center space-x-3">
-                                    <div class="w-2 h-2 rounded-full bg-brand-cyan"></div>
+                                    <div class="w-2 h-2 rounded-full bg-brand-blue"></div>
                                     <span><strong>Pokémon TCG</strong> – Ultra Rares, Illustration Rares, & boosters</span>
                                 </li>
                             </ul>
                         </div>
-                        <div class="mt-8 pt-6 border-t border-brand-border/60 flex items-center justify-between">
-                            <span class="text-xs text-slate-400">Live Inventory Active Below</span>
-                            <a href="#inventory" class="text-xs font-semibold text-brand-cyan hover:underline flex items-center space-x-1">
-                                <span>Check Stock</span>
-                                <i class="fa-solid fa-arrow-right"></i>
+                        <div class="mt-8 pt-6 border-t border-brand-border/60 flex items-center justify-between gap-3">
+                            <span class="text-xs text-slate-400">Looking for something specific?</span>
+                            <a href="#contact" class="text-xs font-semibold text-brand-sky hover:underline flex items-center space-x-1">
+                                <span>Ask About a Card</span>
+                                <svg class="w-3 h-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
                             </a>
                         </div>
                     </div>
 
                     <!-- Computer Services Box -->
-                    <div class="p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-cyan/50 transition-all duration-300 shadow-xl flex flex-col justify-between">
+                    <div class="p-8 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-purple/50 transition-all duration-300 shadow-xl flex flex-col justify-between">
                         <div>
-                            <div class="w-14 h-14 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan flex items-center justify-center text-2xl mb-6">
-                                <i class="fa-solid fa-microchip"></i>
+                            <div class="w-14 h-14 rounded-2xl bg-brand-purple/10 border border-brand-purple/30 text-brand-purple flex items-center justify-center text-2xl mb-6">
+                                <svg viewBox="0 0 32 32" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <!-- RAM stick 1 -->
+                                    <rect x="3" y="5" width="26" height="9" rx="1.5"/>
+                                    <rect x="5.5" y="7.5" width="4" height="4" rx="0.5" fill="currentColor" fill-opacity="0.25" stroke-width="1"/>
+                                    <rect x="11" y="7.5" width="4" height="4" rx="0.5" fill="currentColor" fill-opacity="0.25" stroke-width="1"/>
+                                    <rect x="16.5" y="7.5" width="4" height="4" rx="0.5" fill="currentColor" fill-opacity="0.25" stroke-width="1"/>
+                                    <rect x="22" y="7.5" width="4" height="4" rx="0.5" fill="currentColor" fill-opacity="0.25" stroke-width="1"/>
+                                    <path d="M6 14v1.5M9 14v1.5M12 14v1.5M15 14v1.5M20 14v1.5M23 14v1.5M26 14v1.5" stroke-width="1"/>
+                                    <!-- RAM stick 2 -->
+                                    <g transform="translate(0 13)">
+                                        <rect x="3" y="5" width="26" height="9" rx="1.5"/>
+                                        <rect x="5.5" y="7.5" width="4" height="4" rx="0.5" fill="currentColor" fill-opacity="0.25" stroke-width="1"/>
+                                        <rect x="11" y="7.5" width="4" height="4" rx="0.5" fill="currentColor" fill-opacity="0.25" stroke-width="1"/>
+                                        <rect x="16.5" y="7.5" width="4" height="4" rx="0.5" fill="currentColor" fill-opacity="0.25" stroke-width="1"/>
+                                        <rect x="22" y="7.5" width="4" height="4" rx="0.5" fill="currentColor" fill-opacity="0.25" stroke-width="1"/>
+                                        <path d="M6 14v1.5M9 14v1.5M12 14v1.5M15 14v1.5M20 14v1.5M23 14v1.5M26 14v1.5" stroke-width="1"/>
+                                    </g>
+                                </svg>
                             </div>
                             <h3 class="text-2xl font-bold text-white mb-3 font-tech">PC Builds & Repair</h3>
                             <p class="text-slate-300 text-sm leading-relaxed mb-6">
@@ -202,7 +273,7 @@
                             </p>
                             <ul class="space-y-3 text-sm text-slate-300">
                                 <li class="flex items-center space-x-3">
-                                    <div class="w-2 h-2 rounded-full bg-brand-cyan"></div>
+                                    <div class="w-2 h-2 rounded-full bg-brand-purple"></div>
                                     <span><strong>Pick-Your-Part Custom Builds</strong> – Bring your list or let us consult and build</span>
                                 </li>
                                 <li class="flex items-center space-x-3">
@@ -210,16 +281,16 @@
                                     <span><strong>Diagnostic & Troubleshooting</strong> – No-boot, overheating, & BSOD resolution</span>
                                 </li>
                                 <li class="flex items-center space-x-3">
-                                    <div class="w-2 h-2 rounded-full bg-brand-magenta"></div>
+                                    <div class="w-2 h-2 rounded-full bg-brand-purple"></div>
                                     <span><strong>Basic Hardware Repair</strong> – GPU swaps, RAM upgrades, thermal repasting & cleanings</span>
                                 </li>
                             </ul>
                         </div>
-                        <div class="mt-8 pt-6 border-t border-brand-border/60 flex items-center justify-between">
+                        <div class="mt-8 pt-6 border-t border-brand-border/60 flex items-center justify-between gap-3">
                             <span class="text-xs text-slate-400">Local Service in Carl Junction / Joplin</span>
                             <a href="#contact" class="text-xs font-semibold text-brand-purple hover:underline flex items-center space-x-1">
                                 <span>Request Quote</span>
-                                <i class="fa-solid fa-arrow-right"></i>
+                                <svg class="w-3 h-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
                             </a>
                         </div>
                     </div>
@@ -227,118 +298,20 @@
             </div>
         </section>
 
-        <!-- Physical Card Inventory Section -->
-        <section id="inventory" class="py-16 px-4 sm:px-6">
-            <div class="max-w-7xl mx-auto space-y-8">
-                
-                <!-- Section Header & Collection Switch Tabs -->
-                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-brand-border pb-6">
-                    <div>
-                        <div class="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-brand-cyan">
-                            <i class="fa-solid fa-boxes-stacked"></i>
-                            <span>Store Stock Hub</span>
-                        </div>
-                        <h2 class="text-2xl sm:text-4xl font-bold font-tech text-white mt-1">Physical Card Inventory</h2>
-                        <p class="text-slate-400 text-sm mt-1">Browse our current available stock across our Valuables and Whole Collection databases.</p>
+        <!-- Upcoming Vendor Events Section -->
+        <section id="vendor-events" class="py-16 px-4 sm:px-6">
+            <div class="max-w-5xl mx-auto space-y-8">
+                <div class="text-center">
+                    <div class="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-brand-sky">
+                        <i class="fa-solid fa-tents"></i>
+                        <span>Catch Us Out &amp; About</span>
                     </div>
-
-                    <!-- Main Collection Tabs: Valuables vs Whole Collection -->
-                <div class="flex flex-wrap items-center gap-3">
-                    <button onclick="switchTab('valuables')" id="tab-valuables" 
-                            class="px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-gradient-to-r from-brand-purple to-purple-600 text-white shadow-lg glow-purple">
-                        <i class="fa-solid fa-gem text-amber-300"></i>
-                        <span>Valuables Collection</span>
-                        <span id="badge-valuables-count" class="ml-1.5 px-2 py-0.5 rounded-full bg-black/30 text-xs font-mono">0</span>
-                    </button>
-
-                    <button onclick="switchTab('whole')" id="tab-whole" 
-                            class="px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-brand-surface border border-brand-border text-slate-400 hover:text-white">
-                        <i class="fa-solid fa-layer-group text-brand-cyan"></i>
-                        <span>Whole Collection</span>
-                        <span id="badge-whole-count" class="ml-1.5 px-2 py-0.5 rounded-full bg-brand-card text-xs font-mono">0</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Loading Status Banner (Replaces Upload Bar) -->
-            <div id="loadingStatusContainer" class="p-4 rounded-xl bg-brand-surface border border-brand-border flex items-center justify-between text-xs font-semibold text-slate-300">
-                <span id="loadingStatusText" class="flex items-center space-x-2">
-                    <i class="fa-solid fa-spinner animate-spin text-brand-cyan"></i>
-                    <span>Loading store inventory database...</span>
-                </span>
-                <span id="loadingPercentText" class="font-mono text-brand-cyan">0%</span>
-            </div>
-
-            <!-- Filter Controls Bar -->
-            <div class="p-4 rounded-xl bg-brand-card border border-brand-border flex flex-col md:flex-row items-center gap-4 justify-between">
-                    <div class="relative w-full md:w-80">
-                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                        <input type="text" id="searchInput" oninput="applyFilters()" placeholder="Search card name or set..." class="w-full bg-brand-dark border border-brand-border rounded-lg pl-9 pr-3 py-2 text-xs text-white focus:outline-none focus:border-brand-cyan">
-                    </div>
-
-                    <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
-                        <button onclick="setFoilFilter('all')" id="foil-btn-all" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-purple text-white">All Finishes</button>
-                        <button onclick="setFoilFilter('foil')" id="foil-btn-foil" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-dark text-slate-400 border border-brand-border hover:text-white">Foils Only</button>
-                        <button onclick="setFoilFilter('normal')" id="foil-btn-normal" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-dark text-slate-400 border border-brand-border hover:text-white">Normal Only</button>
-                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-bold font-tech text-white mt-1">Upcoming Vendor Events</h2>
+                    <p class="text-slate-400 text-sm mt-2 max-w-xl mx-auto">Conventions, card shows, and markets where you can find our table. Bring your trade binder!</p>
                 </div>
 
-                <!-- Inventory Table -->
-                <div class="overflow-x-auto rounded-xl border border-brand-border bg-brand-card shadow-2xl">
-                    <table class="w-full text-left text-sm text-slate-300">
-                        <thead class="bg-brand-surface text-slate-400 uppercase text-[11px] font-bold tracking-wider border-b border-brand-border">
-                            <tr>
-                                <th class="p-4">Card Name</th>
-                                <th class="p-4">Set Name</th>
-                                <th class="p-4">Rarity</th>
-                                <th class="p-4">Finish</th>
-                                <th class="p-4">Condition</th>
-                            </tr>
-                        </thead>
-                        <tbody id="inventoryTableBody" class="divide-y divide-brand-border/40 font-medium">
-            <!-- Populated via JavaScript -->
-        </tbody>
-    </table>
-</div>
-
-                <!-- Table Pagination Footer -->
-                <div class="flex items-center justify-between border-t border-brand-border pt-4 text-xs text-slate-400">
-                    <div>
-                        Page <span id="currentPageNum" class="text-white font-bold">1</span> of <span id="totalPagesNum" class="text-white font-bold">1</span>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <button id="prevPageBtn" onclick="changePage(-1)" class="px-3 py-1.5 rounded-lg bg-brand-surface border border-brand-border text-slate-300 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
-                            <i class="fa-solid fa-chevron-left mr-1"></i> Prev
-                        </button>
-                        <button id="nextPageBtn" onclick="changePage(1)" class="px-3 py-1.5 rounded-lg bg-brand-surface border border-brand-border text-slate-300 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed">
-                            Next <i class="fa-solid fa-chevron-right ml-1"></i>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Event Schedule Section -->
-        <section id="events" class="py-16 bg-brand-surface/40 border-t border-brand-border/60 px-4 sm:px-6">
-            <div class="max-w-4xl mx-auto text-center space-y-6">
-                <div class="w-12 h-12 rounded-2xl bg-brand-purple/10 border border-brand-purple/30 text-brand-purple mx-auto flex items-center justify-center text-xl shadow-lg">
-                    <i class="fa-solid fa-calendar-days"></i>
-                </div>
-                <div>
-                    <h2 class="text-2xl sm:text-3xl font-bold font-tech text-white">Event Schedule</h2>
-                    <p class="text-slate-400 text-sm mt-1">Local tournament nights, Commander tables, and PC build workshops.</p>
-                </div>
-
-                <div class="p-8 sm:p-10 rounded-2xl bg-brand-card border border-brand-border max-w-xl mx-auto space-y-4 shadow-xl">
-                    <div class="w-16 h-16 rounded-full bg-brand-dark/80 mx-auto flex items-center justify-center text-brand-cyan border border-brand-border text-2xl">
-                        <i class="fa-solid fa-hourglass-half animate-pulse"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-100">Event Schedule Coming Soon!</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        We are currently organizing our recurring game night schedule (FNM, Commander Nights, and Yu-Gi-Oh! Local Tournaments). Check back soon or contact us to suggest your favorite format!
-                    </p>
-                </div>
+                <!-- Populated via JavaScript from the vendorEvents list at the bottom of this file -->
+                <div id="vendorEventsList" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
             </div>
         </section>
 
@@ -347,7 +320,7 @@
             <div class="max-w-5xl mx-auto">
                 <div class="text-center mb-12">
                     <h2 class="text-2xl sm:text-3xl font-bold font-tech text-white">Get In Touch</h2>
-                    <p class="text-slate-400 text-sm mt-1">Stop by, send us a card query, or request a custom PC quote.</p>
+                    <p class="text-slate-400 text-sm mt-1">Send us a card query, or request a custom PC quote.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -368,6 +341,7 @@
                                     <option>Card Inquiry / Purchase</option>
                                     <option>Custom PC Build Quote</option>
                                     <option>PC Repair / Diagnostic</option>
+                                    <option>Vendor Event Question</option>
                                     <option>General Question</option>
                                 </select>
                             </div>
@@ -375,18 +349,18 @@
                                 <label class="block text-xs font-semibold text-slate-300 mb-1">Message</label>
                                 <textarea rows="3" required placeholder="Tell us what cards or PC specs you're looking for..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-brand-purple"></textarea>
                             </div>
-                            <button type="submit" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-accent text-white font-bold text-xs hover:opacity-90 transition">
+                            <button type="submit" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-blue text-white font-bold text-xs hover:opacity-90 transition">
                                 Send Inquiry
                             </button>
-                            <p id="formStatus" class="hidden text-[11px] text-emerald-400 text-center mt-2"></p>
+                            <p id="formStatus" class="hidden text-[11px] text-brand-sky text-center mt-2"></p>
                         </form>
                     </div>
 
-                    <!-- Store Info & Hours -->
+                    <!-- Store Info -->
                     <div class="space-y-6 flex flex-col justify-between">
                         <div class="p-6 rounded-2xl bg-brand-card border border-brand-border shadow-xl space-y-4">
                             <h3 class="text-lg font-bold text-white flex items-center space-x-2">
-                                <i class="fa-solid fa-store text-brand-cyan text-sm"></i>
+                                <i class="fa-solid fa-store text-brand-sky text-sm"></i>
                                 <span>Shop Details</span>
                             </h3>
 
@@ -399,14 +373,14 @@
                                     </div>
                                 </div>
                                 <div class="flex items-start space-x-3">
-                                    <i class="fa-solid fa-clock text-brand-cyan mt-0.5"></i>
+                                    <i class="fa-solid fa-clock text-brand-sky mt-0.5"></i>
                                     <div>
-                                        <strong class="text-white block">Operating Hours</strong>
-                                        <span>Local appointments & Walk-in availability</span>
+                                        <strong class="text-white block">Hours</strong>
+                                        <span>Hours coming soon. Send us a message to set up an appointment.</span>
                                     </div>
                                 </div>
                                 <div class="flex items-start space-x-3">
-                                    <i class="fa-solid fa-shield-halved text-brand-magenta mt-0.5"></i>
+                                    <i class="fa-solid fa-shield-halved text-brand-violet mt-0.5"></i>
                                     <div>
                                         <strong class="text-white block">Our Promise</strong>
                                         <span>Fair raw card valuations & transparent computer hardware pricing</span>
@@ -420,8 +394,8 @@
                             <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 block mb-3">Supported Trading Games</span>
                             <div class="flex justify-center items-center space-x-6 text-sm font-semibold">
                                 <span class="text-purple-400"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Magic</span>
-                                <span class="text-amber-400"><i class="fa-solid fa-dragon mr-1"></i> Yu-Gi-Oh!</span>
-                                <span class="text-cyan-400"><i class="fa-solid fa-bolt mr-1"></i> Pokémon</span>
+                                <span class="text-violet-400"><i class="fa-solid fa-dragon mr-1"></i> Yu-Gi-Oh!</span>
+                                <span class="text-sky-400"><i class="fa-solid fa-bolt mr-1"></i> Pokémon</span>
                             </div>
                         </div>
                     </div>
@@ -433,304 +407,25 @@
     <!-- Footer -->
     <footer class="border-t border-brand-border py-8 text-center text-xs text-slate-500 bg-brand-dark">
         <div class="max-w-7xl mx-auto px-4 space-y-2">
-            <p>© 2026 Two Brothers Cards and Computers. All rights reserved.</p>
+            <p>© 2026 Two Brothers Cards &amp; Computers. All rights reserved.</p>
             <p class="text-[10px] text-slate-600">Magic: The Gathering, Yu-Gi-Oh!, and Pokémon are registered trademarks of their respective owners.</p>
         </div>
     </footer>
 
     <script>
-        // Data arrays loaded automatically from CSV files on the server
-        let valuablesData = [];
-        let wholeCollectionData = [];
-
-        let currentTab = 'valuables';
-        let filteredItems = [];
-        let currentPage = 1;
-        const pageSize = 25;
-        let activeFoilFilter = 'all';
-
-        // Toggle mobile navigation menu
-        window.toggleMobileMenu = function() {
-            const menu = document.getElementById('mobileMenu');
-            if (menu) {
-                menu.classList.toggle('hidden');
-            }
-        };
-
-        // Tab switching logic
-        window.switchTab = function(tabName) {
-            currentTab = tabName;
-            currentPage = 1;
-
-            const valBtn = document.getElementById('tab-valuables');
-            const wholeBtn = document.getElementById('tab-whole');
-
-            if (tabName === 'valuables') {
-                if (valBtn) valBtn.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-gradient-to-r from-brand-purple to-purple-600 text-white shadow-lg glow-purple";
-                if (wholeBtn) wholeBtn.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-brand-surface border border-brand-border text-slate-400 hover:text-white";
-            } else {
-                if (valBtn) valBtn.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-brand-surface border border-brand-border text-slate-400 hover:text-white";
-                if (wholeBtn) wholeBtn.className = "px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center space-x-2 bg-gradient-to-r from-brand-cyan to-cyan-600 text-white shadow-lg glow-cyan";
-            }
-
-            applyFilters();
-        };
-
-        // Filter calculation
-        window.applyFilters = function() {
-            const searchVal = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
-            const sourceData = currentTab === 'valuables' ? valuablesData : wholeCollectionData;
-
-            filteredItems = sourceData.filter(item => {
-                const matchesSearch = !searchVal || 
-                    (item.name && item.name.toLowerCase().includes(searchVal)) || 
-                    (item.set && item.set.toLowerCase().includes(searchVal));
-
-                const isFoil = item.foil && item.foil.toLowerCase().includes('foil');
-                let matchesFoil = true;
-                if (activeFoilFilter === 'foil') matchesFoil = isFoil;
-                else if (activeFoilFilter === 'normal') matchesFoil = !isFoil;
-
-                return matchesSearch && matchesFoil;
-            });
-
-            currentPage = 1;
-            renderTable();
-        };
-
-        // Foil finish filter buttons handler
-        window.setFoilFilter = function(filterType) {
-            activeFoilFilter = filterType;
-            ['all', 'foil', 'normal'].forEach(type => {
-                const btn = document.getElementById(`foil-btn-${type}`);
-                if (!btn) return;
-                if (type === filterType) {
-                    btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-purple text-white shadow-sm";
-                } else {
-                    btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-dark text-slate-400 border border-brand-border hover:text-white";
-                }
-            });
-            applyFilters();
-        };
-
-        // RFC 4180-style CSV parser (handles quoted fields with commas, quotes, and newlines)
-        function parseCSV(text) {
-            const rows = [];
-            let row = [], field = '', inQuotes = false;
-            if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
-            for (let i = 0; i < text.length; i++) {
-                const c = text[i];
-                if (inQuotes) {
-                    if (c === '"') {
-                        if (text[i + 1] === '"') { field += '"'; i++; }
-                        else inQuotes = false;
-                    } else field += c;
-                } else if (c === '"') inQuotes = true;
-                else if (c === ',') { row.push(field); field = ''; }
-                else if (c === '\n' || c === '\r') {
-                    if (c === '\r' && text[i + 1] === '\n') i++;
-                    row.push(field); rows.push(row); row = []; field = '';
-                } else field += c;
-            }
-            if (field || row.length) { row.push(field); rows.push(row); }
-            return rows;
-        }
-
-        // Automated Fetcher for server-hosted CSV files (valubles_3.csv & Whole collection v4_3.csv)
-        async function loadServerCSV(filePath, targetArrayName) {
-            try {
-                // Try the exact name first, then common renamed variants (spaces <-> underscores)
-                const candidates = [filePath, filePath.replace(/ /g, '_'), filePath.replace(/ /g, '-')];
-                let response = null;
-                for (const cand of candidates) {
-                    try {
-                        const r = await fetch(encodeURI(cand));
-                        if (r.ok) { response = r; break; }
-                    } catch (e) { /* try next */ }
-                }
-                if (!response) throw new Error('file not found');
-                const reader = response.body.getReader();
-                const contentLength = +response.headers.get('Content-Length') || 0;
-                
-                let receivedBytes = 0;
-                let chunks = [];
-                
-                while (true) {
-                    const { done, value } = await reader.read();
-                    if (done) break;
-                    chunks.push(value);
-                    receivedBytes += value.length;
-                    
-                    if (contentLength) {
-                        const pct = Math.round((receivedBytes / contentLength) * 100);
-                        const pctEl = document.getElementById('loadingPercentText');
-                        if (pctEl) pctEl.innerText = `${pct}%`;
-                    }
-                }
-
-                let chunksAll = new Uint8Array(receivedBytes);
-                let position = 0;
-                for (let chunk of chunks) {
-                    chunksAll.set(chunk, position);
-                    position += chunk.length;
-                }
-
-                const text = new TextDecoder("utf-8").decode(chunksAll);
-                const rows = parseCSV(text);
-                if (rows.length === 0) return;
-
-                // Map columns by header name (ManaBox export format)
-                const header = rows[0].map(h => h.trim().toLowerCase());
-                const col = (...names) => {
-                    for (const n of names) {
-                        const idx = header.indexOf(n);
-                        if (idx !== -1) return idx;
-                    }
-                    return -1;
-                };
-                const iName = col('name', 'card name');
-                const iSet = col('set name', 'set', 'set code');
-                const iRarity = col('rarity');
-                const iFoil = col('foil', 'finish');
-                const iCond = col('condition');
-                const iPrice = col('purchase price', 'price');
-                const iQty = col('quantity', 'qty');
-                const get = (row, i) => (i >= 0 && row[i] != null ? row[i].trim() : '');
-                const titleCase = str => str.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-
-                let items = [];
-                for (let r = 1; r < rows.length; r++) {
-                    const row = rows[r];
-                    if (!row.length || (row.length === 1 && !row[0].trim())) continue;
-
-                    const name = get(row, iName) || 'Unknown Card';
-                    const set = get(row, iSet) || 'Unknown Set';
-                    const rarity = titleCase(get(row, iRarity) || 'common');
-                    const foilRaw = get(row, iFoil).toLowerCase();
-                    const foil = foilRaw && foilRaw !== 'normal' && foilRaw !== 'false' ? 'Foil' : 'Normal';
-                    const condition = titleCase(get(row, iCond) || 'near_mint');
-                    const price = parseFloat(get(row, iPrice).replace(/[^0-9.-]+/g, '')) || 0;
-                    const qty = parseInt(get(row, iQty), 10) || 1;
-
-                    items.push({ name, set, rarity, foil, condition, price, qty });
-                }
-
-                if (targetArrayName === 'valuables') valuablesData = items;
-                else wholeCollectionData = items;
-
-            } catch (err) {
-                console.warn(`Could not load local file ${filePath}:`, err);
-            }
-        }
-
-        async function initInventory() {
-            const statusContainer = document.getElementById('loadingStatusContainer');
-            const statusText = document.getElementById('loadingStatusText');
-
-            if (statusText) statusText.innerHTML = `<i class="fa-solid fa-spinner animate-spin text-brand-purple"></i> <span>Loading Valuables Collection...</span>`;
-            await loadServerCSV('valubles_3.csv', 'valuables');
-
-            if (statusText) statusText.innerHTML = `<i class="fa-solid fa-spinner animate-spin text-brand-cyan"></i> <span>Loading Whole Collection...</span>`;
-            await loadServerCSV('Whole collection v4_3.csv', 'whole');
-
-            updateBadgeCounts();
-            applyFilters();
-
-            if (statusContainer) {
-                statusContainer.classList.add('hidden');
-            }
-        }
-
-        // Render table DOM
-        window.renderTable = function() {
-            const tbody = document.getElementById('inventoryTableBody');
-            if (!tbody) return;
-            tbody.innerHTML = '';
-
-            const totalPages = Math.ceil(filteredItems.length / pageSize) || 1;
-            if (currentPage > totalPages) currentPage = totalPages;
-
-            const pageNumEl = document.getElementById('currentPageNum');
-            const totalPagesEl = document.getElementById('totalPagesNum');
-            if (pageNumEl) pageNumEl.innerText = currentPage;
-            if (totalPagesEl) totalPagesEl.innerText = totalPages;
-            
-            const prevBtn = document.getElementById('prevPageBtn');
-            const nextBtn = document.getElementById('nextPageBtn');
-            if (prevBtn) prevBtn.disabled = currentPage === 1;
-            if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
-
-            const startIndex = (currentPage - 1) * pageSize;
-            const pageItems = filteredItems.slice(startIndex, startIndex + pageSize);
-
-            if (pageItems.length === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="5" class="p-12 text-center text-slate-400 text-xs">
-                            <div class="max-w-md mx-auto space-y-3">
-                                <div class="w-12 h-12 rounded-full bg-brand-surface border border-brand-border mx-auto flex items-center justify-center text-brand-purple text-lg">
-                                    <i class="fa-solid fa-boxes-stacked"></i>
-                                </div>
-                                <p class="font-bold text-slate-200">No cards found in this collection.</p>
-                                <p class="text-[11px] text-slate-500">Ensure <code class="text-brand-cyan">valubles_3.csv</code> and <code class="text-brand-cyan">Whole collection v4_3.csv</code> are uploaded to the same folder on your web host.</p>
-                            </div>
-                        </td>
-                    </tr>
-                `;
-                return;
-            }
-
-            pageItems.forEach(item => {
-                const tr = document.createElement('tr');
-                tr.className = "hover:bg-brand-surface/70 transition-colors";
-
-                let rarityClass = "text-slate-400 border-slate-700 bg-slate-800/40";
-                const r = (item.rarity || '').toLowerCase();
-                if (r.includes('mythic')) rarityClass = "text-amber-400 border-amber-500/40 bg-amber-950/20";
-                else if (r.includes('rare')) rarityClass = "text-yellow-300 border-yellow-500/40 bg-yellow-950/20";
-                else if (r.includes('uncommon')) rarityClass = "text-slate-300 border-slate-500/40 bg-slate-800/40";
-
-                const isFoil = item.foil && item.foil.toLowerCase().includes('foil');
-                const foilBadge = isFoil 
-                    ? `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-white shadow-sm">Foil</span>`
-                    : `<span class="text-slate-500 text-[11px]">Normal</span>`;
-
-                tr.innerHTML = `
-                    <td class="p-4 font-bold text-white">${escapeHtml(item.name)}</td>
-                    <td class="p-4 text-slate-300 text-xs">${escapeHtml(item.set)}</td>
-                    <td class="p-4">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-semibold border ${rarityClass} capitalize">
-                            ${escapeHtml(item.rarity)}
-                        </span>
-                    </td>
-                    <td class="p-4">${foilBadge}</td>
-                    <td class="p-4 text-slate-400 text-xs">${escapeHtml(item.condition || 'Near Mint')}</td>
-                `;
-                tbody.appendChild(tr);
-            });
-        };
-
-        window.changePage = function(direction) {
-            currentPage += direction;
-            renderTable();
-        };
-
-        window.updateBadgeCounts = function() {
-            const valBadge = document.getElementById('badge-valuables-count');
-            const wholeBadge = document.getElementById('badge-whole-count');
-            if (valBadge) valBadge.innerText = valuablesData.length.toLocaleString();
-            if (wholeBadge) wholeBadge.innerText = wholeCollectionData.length.toLocaleString();
-        };
-
-        window.handleContactSubmit = function(event) {
-            event.preventDefault();
-            const status = document.getElementById('formStatus');
-            if (status) {
-                status.innerText = "Thank you! Your message has been sent to Two Brothers Cards and Computers.";
-                status.classList.remove('hidden');
-            }
-            event.target.reset();
-        };
+        /* ------------------------------------------------------------------
+           VENDOR EVENTS: add an entry here for each upcoming event.
+           Leave the list empty ([]) to show the "coming soon" card.
+           Example entry:
+           {
+               name: "Joplin Card Show",
+               date: "Sat, Dec 13, 2026",
+               time: "10:00 AM – 4:00 PM",
+               location: "Joplin, MO",
+               details: "Find our table near the front. We'll have singles and sealed product."
+           }
+        ------------------------------------------------------------------- */
+        const vendorEvents = [];
 
         function escapeHtml(str) {
             return String(str || '')
@@ -741,11 +436,60 @@
                 .replace(/'/g, "&#039;");
         }
 
-        // DOM Initialization
-        document.addEventListener('DOMContentLoaded', function() {
-            initInventory();
-            switchTab('valuables');
-        });
+        function renderVendorEvents() {
+            const list = document.getElementById('vendorEventsList');
+            if (!list) return;
+
+            if (vendorEvents.length === 0) {
+                list.className = "max-w-xl mx-auto";
+                list.innerHTML = `
+                    <div class="p-8 sm:p-10 rounded-2xl bg-brand-card border border-brand-border text-center space-y-4 shadow-xl">
+                        <div class="w-16 h-16 rounded-full bg-brand-dark/80 mx-auto flex items-center justify-center text-brand-purple border border-brand-border text-2xl">
+                            <i class="fa-solid fa-tents"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100">No Vendor Events Scheduled Yet</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            We're lining up our next shows and markets. Check back soon, or send us a message to be the first to know where we'll be.
+                        </p>
+                        <a href="#contact" class="inline-flex items-center space-x-2 text-xs font-semibold text-brand-sky hover:underline">
+                            <span>Contact Us</span>
+                            <svg class="w-3 h-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+                        </a>
+                    </div>`;
+                return;
+            }
+
+            list.innerHTML = vendorEvents.map(ev => `
+                <div class="p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-purple/50 transition shadow-xl space-y-3">
+                    <div class="flex items-start justify-between gap-3">
+                        <h3 class="text-lg font-bold text-white font-tech">${escapeHtml(ev.name)}</h3>
+                        <span class="shrink-0 px-2.5 py-1 rounded-lg bg-brand-purple/15 border border-brand-purple/30 text-brand-purple text-[11px] font-semibold">${escapeHtml(ev.date)}</span>
+                    </div>
+                    <div class="space-y-1.5 text-xs text-slate-300">
+                        ${ev.time ? `<div class="flex items-center space-x-2"><i class="fa-solid fa-clock text-brand-sky w-4"></i><span>${escapeHtml(ev.time)}</span></div>` : ''}
+                        ${ev.location ? `<div class="flex items-center space-x-2"><i class="fa-solid fa-location-dot text-brand-purple w-4"></i><span>${escapeHtml(ev.location)}</span></div>` : ''}
+                    </div>
+                    ${ev.details ? `<p class="text-xs text-slate-400 leading-relaxed pt-1">${escapeHtml(ev.details)}</p>` : ''}
+                </div>
+            `).join('');
+        }
+
+        window.toggleMobileMenu = function() {
+            const menu = document.getElementById('mobileMenu');
+            if (menu) menu.classList.toggle('hidden');
+        };
+
+        window.handleContactSubmit = function(event) {
+            event.preventDefault();
+            const status = document.getElementById('formStatus');
+            if (status) {
+                status.innerText = "Thank you! Your message has been sent to Two Brothers Cards & Computers.";
+                status.classList.remove('hidden');
+            }
+            event.target.reset();
+        };
+
+        document.addEventListener('DOMContentLoaded', renderVendorEvents);
     </script>
 </body>
 </html>
